@@ -1,6 +1,5 @@
 package main.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,14 +30,14 @@ public class ProjectController {
      * @return Name of the template.
      */
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
-    public String listerine(Model model){
+    public String list(Model model){
     	model.addAttribute("projects", projectService.getAllProjects());
-    	return "/projects";
+    	return "projects";
     }
     
     @RequestMapping(value = "/projects/{name}", method = RequestMethod.GET)
     public String project(@PathVariable String name, Model model){
     	model.addAttribute("project", projectService.getProjectByName(name));
-    	return "/project";
+    	return "project";
     }
 }
