@@ -1,94 +1,58 @@
-# SBU Web and App Club Website
+# THIS IS THE VERBOSE BRANCH. BEWARE OF *HEAVILY COMMENTED CODE.*
 
-This is a website for the club to serve as our first project and showcase for our members and upcoming projects. The website is constructed with a combination of Spring (Java Back-end) and HTML, CSS, and Javascript (Front-end) with a responsive design.
+## How does all this work?!
 
-## Website Features
+### Dependencies
 
-1. Homepage with smoothscrolling and parallax (maybe?)
-2. Members page showcasing personal projects, bio, and contact information.
-3. Idea submission board for the public.
-4. Maybe a club logo?
+First, we define our **dependencies**. Dependencies are libraries, scripts, reusable code, preprocessors, etc...
+ 
+Simply put, a dependency is code created by talented developers to facilitate our development 
+process by letting us focus on our project(webpage) and not on reinventing the wheel, like HTTP.
 
-### Haven't Started:
-  - Member.java  
-  - members.html  
-  - members.css  
-  - Project.java  
-  - Framework.java  
-  - MemberController.java
-  - ideas.html
-  - projects.html
-  - index.html
-  
-#### Note: Html files have to be inside src/main/resources/templates/ in order for Spring to see them!
+Dependencies are defined in the `pom.xml` in XML.
+````
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>3.8.1</version>
+    <scope>test</scope>
+</dependency>
+````
 
-### In Progress:
+### Thymeleaf
 
+We can generate HTML dynamically with Thymeleaf.
 
+For example:
+````HTML
+<div th:if="${not #lists.isEmpty(projects)}">
+    <!-- content -->
+</div>
+````
+All thymeleaf attributes start with `th`. Following that is always a `:` followed by some
+directive, like `if`, `each`,`for`, etc. (Read the docs).
 
-### Finished:
+All expressions are surrounded with `${...}`. This tells thymeleaf to interpret the expression.
+In this snippet, if the expression `${not #lists.isEmpty(projects)}"` returns true, ie, the list `projects` is not empty.
 
+`${not #lists.isEmpty(projects)` in Java roughly translates to 
+ ````java
+ if ( !projects.isEmpty() ){
+    // do stuff
+ }
+ ````
+`#lists` and `not` are thymeleaf keywords.
 
+### Spring
 
-# Webpages
-1. Members
-2. Projects
-3. Homepage
-4. Idea Submissions
+BUT where did `projects` come from? `ProjectService.java`
 
-## Members Webpage 
-  - Member.java:
+````java
+@RequestMapping(value = "/projects", method = RequestMethod.GET)
+public String list(Model model){
+  model.addAttribute("projects", projectService.getAllProjects());
+  return "projects";
+} 
+````
+We add `key=projects` and its`value= projectService.getAllProjects()` to the `Model` so we can reference them in the HTML template. `projects.html`.
 
-    ```
-    String mFullname
-    String mEmail  
-    String mMajor  
-    String mImagePath  
-    List<Project> mProjects  
-    HashMap<String, String> mUrls
-    ```
-  - members.html  
-  - members.css  
-  - Project.java  
-  - Framework.java  
-  - MemberController.java
-  
-## Projects Webpage
-  - projects.html
-   - CSS file naming pending
-   - Redirects to project.html
-   - Lists all fields in project.java except the list of members.
-   - Possible final look of page(Tell me what you think!) https://s10.postimg.org/ctojbi9x5/possiblelookforprojectspage.png
-  - project.html (View of one entire project)
-   - CSS file?
-  - Project.java
-   - Project Name
-   - Description
-   - Image URL
-   - Creator (Represented as a member class)
-   - ArrayList of members.
-  - ProjectController.java
-   - Routes users who type in "projects/" in URL bar.
-   - Also handles "projects/{name of project}"
-  -ProjectService.java
-   - Pulls requested data from wherever it's stored.
-  
-
-
-## Homepage
-   - index.html
-     - regular.css (Standard css for default view)
-     - mobile.css (Mobile optimized css)
-     - app.js (If we need it)
-    
-
-
-## Idea Submissions Webpage
-  - ideas.html
-   - CSS file naming pending
-
-
-### Resources
-
-- Hungarian Notation (as discussed by Chris)
-  - [Hungarian Notation examples](https://en.wikipedia.org/wiki/Hungarian_notation#Examples, "If you're reading this, you are cool.")

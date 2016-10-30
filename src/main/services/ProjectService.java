@@ -23,7 +23,7 @@ public class ProjectService {
 	 * @return List of all projects that were found.
 	 */
 	public List<Project> getAllProjects() {
-		ArrayList<Project> projects = new ArrayList<>();
+		ArrayList<Project> projects = new ArrayList<Project>();
 		for(int counter = 0; counter < 10; counter++){
 			projects.add(createNewProject());
 		}
