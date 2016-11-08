@@ -1,86 +1,21 @@
-# SBU Web and App Club Website
+#Security branch
+I played around a little with security and got some basic functionality working.
+It's not complete and many features are missing like creating accounts and letting admins view/edit/delete all users. Can't logout yet either.
+Currently, to login you must create an account by going to /admin. It will redirect you to the projects page after it creates an account.
+Once it's created, you can login by going to /login or trying to access a page that requires admin privileges.
 
-This is a website for the club to serve as our first project and showcase for our members and upcoming projects. The website is constructed with a combination of Spring (Java Back-end) and HTML, CSS, and Javascript (Front-end) with a responsive design.
-
-## Website Features
-
-1. Homepage with smoothscrolling and parallax (maybe?)
-2. Members page showcasing personal projects, bio, and contact information.
-3. Idea submission board for the public.
-4. Maybe a club logo?
-
-### Haven't Started:
-  - Framework.java  
-  - ideas.html
-  
-#### Note: Html files have to be inside src/main/resources/templates/ in order for Spring to see them!
-
-### In Progress:
-  - index.html
-  - Member.java  
-  - members.html  
-  - members.css  
-  - MemberController.java
-
-### Finished:
-  - Project.java  
-  - ProjectController.java
-  - projects.html (Needs CSS)
-  - project.html (Needs CSS)
-  - project_create.html (Needs CSS)
-
-# Webpages
-1. Members
-2. Projects
-3. Homepage
-4. Idea Submissions
-
-## Members Webpage 
-  - Member.java:
-
-    ```
-    String mFullname
-    String mEmail  
-    String mMajor  
-    String mImagePath  
-    List<Project> mProjects  
-    HashMap<String, String> mUrls
-    ```
-  - members.html  
-  - members.css  
-  - Project.java  
-  - Framework.java  
-  - MemberController.java
-  
-## Projects Webpage
-   - /projects:
-     List of all projects
-   - /projects/{project_name}:
-     Full page dedicated to one project.
-   - /projects/create (method = POST):
-     Where da magic happens :)
-   - /projects/create (method = GET):
-     The actual page where you can create your project.
-     Fields are:
-    - Project Name (Can't be 'create' or will interfere with navigation.)(Can't be blank)(Can't be the same as one that already exists)
-    - Project Description
-    - Image URL (Has a default one that we specify)
-    - Creator (Can't be blank)
-    
-## Homepage
-   - index.html
-     - regular.css (Standard css for default view)
-     - mobile.css (Mobile optimized css)
-     - app.js (If we need it)
-    
-
-
-## Idea Submissions Webpage
-  - ideas.html
-   - CSS file naming pending
-
-
-### Resources
-
-- Hungarian Notation (as discussed by Chris)
-  - [Hungarian Notation examples](https://en.wikipedia.org/wiki/Hungarian_notation#Examples, "If you're reading this, you are cool.")
+##Missing Features
+ - Admin tools (view, delete, etc.)
+ - Linkage of accounts to members
+ - Logout functions
+ - Remember Me checkbox so you don't have to login each time you visit the site. (If you want)
+ 
+##Needs Work
+ - Login page (It's really messy)
+ - Documentation
+ - Code style
+ 
+##Fun Fact
+The database doesn't actually know your password. Instead, some hash algorithm is used to create a
+string that can not be decoded back into your password. It's also salted.
+For more info, look at https://en.wikipedia.org/wiki/Cryptographic_hash_function
