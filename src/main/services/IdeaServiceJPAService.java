@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
+import org.springframework.stereotype.Service;
+
 import main.modelpojos.Idea;
 
+@Service
 public class IdeaServiceJPAService implements IdeaService {
 	
 	private EntityManagerFactory emf;
