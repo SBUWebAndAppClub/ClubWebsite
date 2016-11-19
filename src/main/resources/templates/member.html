@@ -12,10 +12,10 @@
 	<h4 th:text="'Image Path: ' + ${member.imagePath}">Creator Name</h4>
 	<p th:text="${member.bio}">No bio...</p>
 	<div th:if="${not #lists.isEmpty(member.projects)}">
-        <h3>Members List</h3>
+        <h3>Projects Worked On:</h3>
         <table class="table table-striped">
             <tr th:each="project : ${member.projects}">
-                <td th:text="'Member Name: ' + ${project.name}">Project Name</td>
+                <td th:text="'Project Name: ' + ${project.name}">Project Name</td>
             </tr>
         </table>
     </div>
