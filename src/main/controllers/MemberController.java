@@ -15,7 +15,10 @@ public class MemberController {
     @RequestMapping(value = "/members")
     public String memberList(Model model) {
         model.addAttribute("members", memberService.getMembers());
+
+
         return "/members";
+
     }
 
     @RequestMapping(value = "/member/{id}")

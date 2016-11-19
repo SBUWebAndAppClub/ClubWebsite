@@ -1,18 +1,21 @@
 package main;
 
-import java.util.HashSet;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-
 import main.modelpojos.Member;
 import main.modelpojos.Project;
 import main.services.MemberService;
 import main.services.ProjectService;
 import main.services.RelationManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.http.HttpStatus;
+
+import java.util.HashSet;
 
 @SpringBootApplication
 public class Application implements ApplicationListener<ContextRefreshedEvent> {
@@ -29,6 +32,19 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class);
 	}
+
+	@Bean
+	public EmbeddedServletContainerCustomizer containerCustomizer(){
+		return (container -> {
+			ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND,
+					"/projects");
+			ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/projects");
+			container.addErrorPages(error404Page,error500Page);
+			
+		});
+
+	}
+
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -76,7 +92,7 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 			Project p = new Project();
 			p.setName("Test Project " + index);
 			p.setDescription("TESTING.");
-			p.setImagePath("https://media-transformational1.netdna-ssl.com/wp-content/uploads/2016/10/Nadia-Bouhdili.jpg");
+			p.setImagePath("http://i.imgur.com/WYiyYu1.jpg");
 			p.setWorkingMembers(new HashSet<Member>());
 			
 			projectService.createProject(p);
