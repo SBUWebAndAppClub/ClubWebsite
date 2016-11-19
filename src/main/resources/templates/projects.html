@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -67,26 +67,50 @@
         </div>
         <div th:if="${not #lists.isEmpty(projects)}">
             <!-- Projects Row -->
-            <div class="row" th:each="index : ${#numbers.sequence(0, #lists.size(projects), 4)}">
+            <div class="row" th:each="index : ${#numbers.sequence(0, #lists.size(projects) - 1, 4)}">
                 <div class="col-md-3 portfolio-item">
-                    <a th:href="${'/project/' + projects[index].name}">
+                    <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
-                    </a>
+                        <div class="overlay">
+                            <h2 th:text="${projects[index].name}" />
+                            <p>
+                                <a th:href="${'/project/' + projects[index].name}">View More &raquo;</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 portfolio-item" th:if="${index} + 1 &lt; ${#lists.size(projects)}">
-                    <a th:href="${'/project/' + projects[index + 1].name}">
+                <div class="col-md-3 portfolio-item"  th:if="${index} + 1 &lt; ${#lists.size(projects)}">
+                    <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index + 1].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
-                    </a>
+                        <div class="overlay">
+                            <h2 th:text="${projects[index + 1].name}" />
+                            <p>
+                                <a th:href="${'/project/' + projects[index + 1].name}">View More &raquo;</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 portfolio-item" th:if="${index} + 2 &lt; ${#lists.size(projects)}">
-                    <a th:href="${'/project/' + projects[index + 2].name}">
+                <div class="col-md-3 portfolio-item"  th:if="${index} + 2 &lt; ${#lists.size(projects)}">
+                    <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index + 2].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
-                    </a>
+                        <div class="overlay">
+                            <h2 th:text="${projects[index + 2].name}" />
+                            <p>
+                                <a th:href="${'/project/' + projects[index + 2].name}">View More &raquo;</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 portfolio-item" th:if="${index} + 3 &lt; ${#lists.size(projects)}">
-                    <a th:href="${'/project/' + projects[index + 3].name}">
+                <div class="col-md-3 portfolio-item"  th:if="${index} + 3 &lt; ${#lists.size(projects)}">
+                    <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index + 3].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
-                    </a>
+                        <div class="overlay">
+                            <h2 th:text="${projects[index + 3].name}" />
+                            <p>
+                                <a th:href="${'/project/' + projects[index + 3].name}">View More &raquo;</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

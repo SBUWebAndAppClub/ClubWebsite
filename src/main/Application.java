@@ -72,7 +72,7 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 		relationManager.createMemberToProjectRelation(m2.getId(), p1.getName());
 		relationManager.createMemberToProjectRelation(m3.getId(), p1.getName());
 		
-		for(int index = 0; index < 40; index++){
+		for(int index = 1; index < 45; index++){
 			Project p = new Project();
 			p.setName("Test Project " + index);
 			p.setDescription("TESTING.");
