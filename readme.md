@@ -2,6 +2,18 @@
 
 This is a website for the club to serve as our first project and showcase for our members and upcoming projects. The website is constructed with a combination of Spring (Java Back-end) and HTML, CSS, and Javascript (Front-end) with a responsive design.
 
+#IMPORTANT NOTICE
+
+Apparently you have to close ALL tags in html files otherwise spring freaks out and throws an error at you. For example:
+```
+    <img blah="wasd">
+```
+
+Is NOT ok. Instead do:
+```
+    <img blah="wasd"/>
+```
+Notice the /> at the end. You need it. :(
 ## Website Features
 
 1. Homepage with smoothscrolling and parallax (maybe?)
