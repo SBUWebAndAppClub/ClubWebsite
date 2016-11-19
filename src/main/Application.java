@@ -57,19 +57,27 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 		m3.setUrls(new String[]{"/projects/Club%20Website Club project", "https://www.google.com/ Google Website"});
 		m3.setProjects(new HashSet<Project>());
 		
-		Project p = new Project();
-		p.setName("Club Website");
-		p.setDescription("It's a website.");
-		p.setImagePath("None");
-		p.setWorkingMembers(new HashSet<Member>());
+		Project p1 = new Project();
+		p1.setName("Club Website");
+		p1.setDescription("It's a website.");
+		p1.setImagePath("http://placehold.it/750x650");
+		p1.setWorkingMembers(new HashSet<Member>());
 		
 		memberService.createMember(m1);
 		memberService.createMember(m2);
 		memberService.createMember(m3);
-		projectService.createProject(p);
+		projectService.createProject(p1);
 		
-		relationManager.createMemberToProjectRelation(m1.getId(), p.getName());
-		relationManager.createMemberToProjectRelation(m2.getId(), p.getName());
-		relationManager.createMemberToProjectRelation(m3.getId(), p.getName());
+		relationManager.createMemberToProjectRelation(m1.getId(), p1.getName());
+		relationManager.createMemberToProjectRelation(m2.getId(), p1.getName());
+		relationManager.createMemberToProjectRelation(m3.getId(), p1.getName());
+		
+		Project p2 = new Project();
+		p2.setName("Test Project");
+		p2.setDescription("TESTING.");
+		p2.setImagePath("http://placehold.it/750x650");
+		p2.setWorkingMembers(new HashSet<Member>());
+		
+		projectService.createProject(p2);
 	}
 }
