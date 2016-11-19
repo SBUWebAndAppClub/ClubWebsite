@@ -22,7 +22,7 @@ public class IdeaController {
 	
 	@RequestMapping(value = "/idea/{id}")
     public String idea(@PathVariable Integer id, Model model) {
-        model.addAttribute("member", ideaService.getIdeaByID(id));
+        model.addAttribute("idea", ideaService.getIdeaByID(id));
         return "/idea";
     }
 }
