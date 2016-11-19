@@ -1,5 +1,11 @@
 body {
-    padding-top: 20px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 20px;
+    background: #CBF2EF !important;
+    background-image: url('http://66.media.tumblr.com/7b79eb89dd63687766d01eb1ce6fcc98/tumblr_o6qruifRYm1tf8vylo1_1280.png') !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% Auto !important;
+    display: compact !important;
 }
 
 .portfolio-item {

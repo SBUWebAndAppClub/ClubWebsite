@@ -72,12 +72,14 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 		relationManager.createMemberToProjectRelation(m2.getId(), p1.getName());
 		relationManager.createMemberToProjectRelation(m3.getId(), p1.getName());
 		
-		Project p2 = new Project();
-		p2.setName("Test Project");
-		p2.setDescription("TESTING.");
-		p2.setImagePath("https://media-transformational1.netdna-ssl.com/wp-content/uploads/2016/10/Nadia-Bouhdili.jpg");
-		p2.setWorkingMembers(new HashSet<Member>());
-		
-		projectService.createProject(p2);
+		for(int index = 0; index < 40; index++){
+			Project p = new Project();
+			p.setName("Test Project " + index);
+			p.setDescription("TESTING.");
+			p.setImagePath("https://media-transformational1.netdna-ssl.com/wp-content/uploads/2016/10/Nadia-Bouhdili.jpg");
+			p.setWorkingMembers(new HashSet<Member>());
+			
+			projectService.createProject(p);
+		}
 	}
 }
