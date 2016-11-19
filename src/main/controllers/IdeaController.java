@@ -1,12 +1,17 @@
 package main.controllers;
 
+import main.modelpojos.Idea;
+import main.services.IdeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import main.services.IdeaService;
+import javax.validation.Valid;
 
 @Controller
 public class IdeaController {
@@ -19,7 +24,22 @@ public class IdeaController {
         model.addAttribute("ideas", ideaService.getIdeas());
         return "/ideas";
     }
-	
+
+    @RequestMapping(value="ideas/new", method = RequestMethod.GET)
+    public String newIdea(Model model){
+        model.addAttribute("idea", new Idea());
+        return "idea_create";
+    }
+    //TODO sbu email verification
+    @RequestMapping(value = "ideas/new", method = RequestMethod.POST)
+    public String postIdea(@ModelAttribute @Valid Idea idea, BindingResult bindingResult){
+    ideaService.createIdea(idea);
+    return "redirect:/projects/";
+    }
+
+
+
+
 	@RequestMapping(value = "/idea/{id}")
     public String idea(@PathVariable Integer id, Model model) {
         model.addAttribute("idea", ideaService.getIdeaByID(id));

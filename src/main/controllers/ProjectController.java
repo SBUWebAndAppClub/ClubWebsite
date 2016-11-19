@@ -47,7 +47,7 @@ public class ProjectController {
 		//Trim Strings
 		project.setName(project.getName().trim());
 		project.setDescription(project.getDescription().trim());
-		project.setImagePath(project.getImagePath().trim());
+		project.(prosetImagePathject.getImagePath().trim());
 		// Check if name is taken
 		if (projectService.getProjectByName(project.getName()) != null)
 			bindingResult.rejectValue("name", "error.name", "Name is taken!");

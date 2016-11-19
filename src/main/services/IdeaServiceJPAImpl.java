@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import main.modelpojos.Idea;
 
 @Service
-public class IdeaServiceJPAService implements IdeaService {
+public class IdeaServiceJPAImpl implements IdeaService {
 	
 	private EntityManagerFactory emf;
 	

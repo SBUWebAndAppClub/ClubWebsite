@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>New Project</h1>
-	<form action="#" th:action="@{/projects/create}" th:object="${project}" method="post">
+	<form action="#" th:action="@{/ideas/new}" th:object="${idea}" method="post">
 		<table>
 			<tr>
 				<td>Project Name:</td>
@@ -19,13 +19,9 @@
 			</tr>
 			<tr>
 				<td>Image URL:</td>
-				<td><input type="text" th:field="*{imagePath}" /></td>
+				<td><input type="text" th:field="*{email}" /></td>
 			</tr>
-			<tr>
-				<td>Your Name:</td>
-				<td><input type="text" th:field="*{creator}" /></td>
-				<td th:if="${#fields.hasErrors('creator')}" th:errors="*{creator}">Can not be blank.</td>
-			</tr>
+
 			<tr>
 				<td><button type="submit">Create!</button></td>
 			</tr>
