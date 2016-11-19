@@ -75,7 +75,7 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 		Project p2 = new Project();
 		p2.setName("Test Project");
 		p2.setDescription("TESTING.");
-		p2.setImagePath("http://placehold.it/750x650");
+		p2.setImagePath("https://media-transformational1.netdna-ssl.com/wp-content/uploads/2016/10/Nadia-Bouhdili.jpg");
 		p2.setWorkingMembers(new HashSet<Member>());
 		
 		projectService.createProject(p2);
