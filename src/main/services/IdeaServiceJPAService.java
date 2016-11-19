@@ -48,6 +48,6 @@ public class IdeaServiceJPAService implements IdeaService {
 
 	@Override
 	public Idea getIdeaByID(Integer id) {
-		return null;
+		return emf.createEntityManager().find(Idea.class, id);
 	}
 }

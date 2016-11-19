@@ -15,13 +15,13 @@ public class IdeaController {
     private IdeaService ideaService;
 	
 	@RequestMapping(value = "/ideas")
-    public String memberList(Model model) {
+    public String ideaList(Model model) {
         model.addAttribute("ideas", ideaService.getIdeas());
         return "/ideas";
     }
 	
 	@RequestMapping(value = "/idea/{id}")
-    public String member(@PathVariable Integer id, Model model) {
+    public String idea(@PathVariable Integer id, Model model) {
         model.addAttribute("member", ideaService.getIdeaByID(id));
         return "/idea";
     }

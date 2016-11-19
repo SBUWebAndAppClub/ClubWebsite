@@ -10,9 +10,6 @@ public class Idea {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	public String name;
-	
-	public String description, email;
+	public String name, description, email;
 	
 }
