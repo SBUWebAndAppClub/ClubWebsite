@@ -68,7 +68,7 @@
         <div th:if="${not #lists.isEmpty(projects)}">
             <!-- Projects Row -->
             <div class="row" th:each="index : ${#numbers.sequence(0, #lists.size(projects) - 1, 4)}">
-                <div class="col-md-3 portfolio-item col-sm-4">
+                <div class="col-md-3 portfolio-item col-sm-3 col-xs-3">
                     <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
                         <div class="overlay">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 portfolio-item col-sm-4"  th:if="${index} + 1 &lt; ${#lists.size(projects)}">
+                <div class="col-md-3 portfolio-item col-sm-3 col-xs-3"  th:if="${index} + 1 &lt; ${#lists.size(projects)}">
                     <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index + 1].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
                         <div class="overlay">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 portfolio-item col-sm-4"  th:if="${index} + 2 &lt; ${#lists.size(projects)}">
+                <div class="col-md-3 portfolio-item col-sm-3 col-xs-3"  th:if="${index} + 2 &lt; ${#lists.size(projects)}">
                     <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index + 2].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
                         <div class="overlay">
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 portfolio-item col-sm-4"  th:if="${index} + 3 &lt; ${#lists.size(projects)}">
+                <div class="col-md-3 portfolio-item col-sm-3 col-xs-3"  th:if="${index} + 3 &lt; ${#lists.size(projects)}">
                     <div class="hovereffect">
                         <img class="img-rounded img-responsive" th:src="${projects[index + 3].imagePath}" alt="Text displayed if image fails to load for whatever reason" />
                         <div class="overlay">
