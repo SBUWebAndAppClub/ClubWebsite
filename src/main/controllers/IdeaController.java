@@ -1,7 +1,7 @@
 package main.controllers;
 
 import main.modelpojos.Idea;
-import main.services.IdeaService;
+import main.services.serviceinterfaces.IdeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class IdeaController {
 	@RequestMapping(value = "/ideas")
     public String ideaList(Model model) {
         model.addAttribute("ideas", ideaService.getIdeas());
-        return "/ideas";
+        return "index";
     }
 
     @RequestMapping(value="ideas/new", method = RequestMethod.GET)

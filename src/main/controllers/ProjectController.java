@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import main.services.ProjectService;
+import main.services.serviceinterfaces.ProjectService;
 
 @Controller
 public class ProjectController {

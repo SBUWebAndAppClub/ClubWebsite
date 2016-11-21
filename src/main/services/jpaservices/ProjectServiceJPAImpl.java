@@ -1,4 +1,4 @@
-package main.services;
+package main.services.jpaservices;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
+import main.services.serviceinterfaces.ProjectService;
 import org.springframework.stereotype.Service;
 
 import main.modelpojos.Project;

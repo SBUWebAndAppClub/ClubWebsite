@@ -1,5 +1,7 @@
-package main.services;
+package main.services.jpaservices;
 
+import main.services.serviceinterfaces.MemberService;
+import main.services.serviceinterfaces.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

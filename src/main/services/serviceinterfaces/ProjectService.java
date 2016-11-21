@@ -1,4 +1,4 @@
-package main.services;
+package main.services.serviceinterfaces;
 
 import main.modelpojos.Project;
 import org.springframework.stereotype.Service;
