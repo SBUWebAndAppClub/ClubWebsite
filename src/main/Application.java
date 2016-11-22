@@ -14,14 +14,17 @@ public class Application  {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class);
 	}
-
+	
+	private static final String PATH = "/errors";
+	
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer(){
 		return (container -> {
-			ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND,
-					"/projects");
-			ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/projects");
-			container.addErrorPages(error404Page,error500Page);
+			ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, PATH);
+			ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, PATH);
+			ErrorPage error400Page = new ErrorPage(HttpStatus.BAD_REQUEST, PATH);
+			ErrorPage allErrorPage = new ErrorPage(PATH);
+			container.addErrorPages(error404Page,error500Page, error400Page, allErrorPage);
 			
 		});
 
