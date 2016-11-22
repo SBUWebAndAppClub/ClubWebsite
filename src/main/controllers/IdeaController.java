@@ -22,7 +22,7 @@ public class IdeaController {
 	@RequestMapping(value = "/ideas")
     public String ideaList(Model model) {
         model.addAttribute("ideas", ideaService.getIdeas());
-        return "index";
+        return "ideas";
     }
 
     @RequestMapping(value="ideas/new", method = RequestMethod.GET)
@@ -34,7 +34,7 @@ public class IdeaController {
     @RequestMapping(value = "ideas/new", method = RequestMethod.POST)
     public String postIdea(@ModelAttribute @Valid Idea idea, BindingResult bindingResult){
     ideaService.createIdea(idea);
-    return "redirect:/projects/";
+    return "redirect:/ideas";
     }
 
 
