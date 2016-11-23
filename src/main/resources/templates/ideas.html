@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ideas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(ideas)}">
+        <h2>Ideas</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Name.....................................</th>
+                <th>Email....................................</th>
+                <th>Idea Pages</th>
+            </tr>
+            <tr th:each="idea : ${ideas}">
+                <td th:text="${idea.name}">Name</td>
+                <td th:text="${idea.email}">Email</td>
+                <td><a th:href="${'/idea/' + idea.id}">View More...</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

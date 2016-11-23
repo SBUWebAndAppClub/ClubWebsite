@@ -15,34 +15,42 @@ import javax.validation.Valid;
 
 @Controller
 public class IdeaController {
-	
+
 	@Autowired
-    private IdeaService ideaService;
-	
+	private IdeaService ideaService;
+
 	@RequestMapping(value = "/ideas")
-    public String ideaList(Model model) {
-        model.addAttribute("ideas", ideaService.getIdeas());
-        return "ideas";
-    }
+	public String ideaList(Model model) {
+		model.addAttribute("ideas", ideaService.getIdeas());
+		return "ideas";
+	}
 
-    @RequestMapping(value="ideas/new", method = RequestMethod.GET)
-    public String newIdea(Model model){
-        model.addAttribute("idea", new Idea());
-        return "idea_create";
-    }
-    //TODO sbu email verification
-    @RequestMapping(value = "ideas/new", method = RequestMethod.POST)
-    public String postIdea(@ModelAttribute @Valid Idea idea, BindingResult bindingResult){
-    ideaService.createIdea(idea);
-    return "redirect:/ideas";
-    }
+	@RequestMapping(value = "ideas/new", method = RequestMethod.GET)
+	public String newIdea(Model model) {
+		Idea idea = new Idea();
+		idea.email = "@stonybrook.edu";
+		model.addAttribute("idea", idea);
+		return "idea_create";
+	}
 
-
-
+	// TODO Send email to stonybrook email to check its validity.
+	@RequestMapping(value = "ideas/new", method = RequestMethod.POST)
+	public String postIdea(@ModelAttribute @Valid Idea idea, BindingResult bindingResult) {
+		//Trim strings
+		idea.setName(idea.getName().trim());
+		idea.setDescription(idea.getDescription().trim());
+		idea.setEmail(idea.getEmail().trim());
+		//Check for errors
+		if (bindingResult.hasErrors()) {
+			return "idea_create";
+		}
+		ideaService.createIdea(idea);
+		return "redirect:/idea/" + idea.getId();
+	}
 
 	@RequestMapping(value = "/idea/{id}")
-    public String idea(@PathVariable Integer id, Model model) {
-        model.addAttribute("idea", ideaService.getIdeaByID(id));
-        return "/idea";
-    }
+	public String idea(@PathVariable Integer id, Model model) {
+		model.addAttribute("idea", ideaService.getIdeaByID(id));
+		return "idea";
+	}
 }

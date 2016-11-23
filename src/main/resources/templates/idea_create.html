@@ -5,21 +5,23 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>New Project</h1>
+	<h1>New Idea</h1>
 	<form action="#" th:action="@{/ideas/new}" th:object="${idea}" method="post">
 		<table>
 			<tr>
-				<td>Project Name:</td>
+				<td>Idea Name:</td>
 				<td><input type="text" th:field="*{name}" /></td>
 				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
 			</tr>
 			<tr>
 				<td>Description:</td>
 				<td><textarea type="text" rows="6" cols="21" th:field="*{description}" /></td>
+				<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
 			</tr>
 			<tr>
-				<td>Image URL:</td>
+				<td>Email:</td>
 				<td><input type="text" th:field="*{email}" /></td>
+				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
 			</tr>
 
 			<tr>

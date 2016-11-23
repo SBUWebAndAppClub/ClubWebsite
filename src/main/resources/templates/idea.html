@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title text="${idea.fullName}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2 th:text="'Idea Name: ' + ${idea.name}">Idea Name</h2>
+	<h4 th:text="'Email: ' + ${idea.email}">Email</h4>
+	<h4 th:text="'Description: ' + ${idea.description}"></h4>
+    <a href="/ideas">Back...</a>
+</body>
+</html>
