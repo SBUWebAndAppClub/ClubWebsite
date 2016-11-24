@@ -1,7 +1,7 @@
 package main.controllers;
 
-import main.modelpojos.Idea;
-import main.services.serviceinterfaces.IdeaService;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.validation.Valid;
+import main.modelpojos.Idea;
+import main.services.serviceinterfaces.IdeaService;
 
 @Controller
 public class IdeaController {
@@ -28,7 +29,7 @@ public class IdeaController {
 	@RequestMapping(value = "ideas/new", method = RequestMethod.GET)
 	public String newIdea(Model model) {
 		Idea idea = new Idea();
-		idea.email = "@stonybrook.edu";
+		idea.setEmail("@stonybrook.edu");
 		model.addAttribute("idea", idea);
 		return "form";
 	}
@@ -50,7 +51,11 @@ public class IdeaController {
 
 	@RequestMapping(value = "/idea/{id}")
 	public String idea(@PathVariable Integer id, Model model) {
-		model.addAttribute("idea", ideaService.getIdeaByID(id));
+		Idea idea = ideaService.getIdeaByID(id);
+		if(idea == null){//If idea doesn't exist.
+			return "error/404";
+		}
+		model.addAttribute("idea", idea);
 		return "idea";
 	}
 }

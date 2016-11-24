@@ -18,14 +18,14 @@ public class Idea {
 	private Integer version;
 	
 	@Pattern(message = "Can'''t be empty!", regexp = ".*[^ ].*")
-	public String name;
+	private String name;
 	
 	@Pattern(message = "Can'''t be empty!", regexp = ".*[^ ].*")
-	public String description;
+	private String description;
 	
 	//Makes sure the email is a valid Stonybrook email. Doesn't send them an email to check, however.(yet!)
 	@Pattern(message = "Not a stonybrook email!", regexp = "\\S+@stonybrook\\.edu$")
-	public String email;
+	private String email;
 
 	public Integer getId() {
 		return id;
