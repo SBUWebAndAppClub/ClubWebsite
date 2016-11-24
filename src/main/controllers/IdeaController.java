@@ -30,7 +30,7 @@ public class IdeaController {
 		Idea idea = new Idea();
 		idea.email = "@stonybrook.edu";
 		model.addAttribute("idea", idea);
-		return "idea_create";
+		return "form";
 	}
 
 	// TODO Send email to stonybrook email to check its validity.
@@ -42,7 +42,7 @@ public class IdeaController {
 		idea.setEmail(idea.getEmail().trim());
 		//Check for errors
 		if (bindingResult.hasErrors()) {
-			return "idea_create";
+			return "form";
 		}
 		ideaService.createIdea(idea);
 		return "redirect:/idea/" + idea.getId();
