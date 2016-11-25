@@ -26,6 +26,26 @@ public class Idea {
 	//Makes sure the email is a valid Stonybrook email. Doesn't send them an email to check, however.(yet!)
 	@Pattern(message = "Not a stonybrook email!", regexp = "\\S+@stonybrook\\.edu$")
 	private String email;
+	
+	private boolean verified;
+	
+	public String getVerificationLink() {
+		return verificationLink;
+	}
+
+	public void setVerificationLink(String verificationLink) {
+		this.verificationLink = verificationLink;
+	}
+	
+	private String verificationLink;
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
 
 	public Integer getId() {
 		return id;
