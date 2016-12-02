@@ -65,7 +65,11 @@ public class EmailManagerImpl implements EmailManager {
 					.append(idea.getVerificationLink()).append(">");
 			msg.append("Click here to verify your email").append("</a>");
 			// email.setMsg(msg.toString());
-			email.setHtmlMsg(msg.toString());
+			String url = "http://localhost:8080/idea/" + idea.getId() + "/" + idea.getVerificationLink() + "/";
+			HashMap<String, String> mappings = new HashMap<String, String>();
+			mappings.put("$url", url);
+			String htmail = readTextFile("src/main/resources/templates/email_validation.html", mappings);
+			email.setHtmlMsg(htmail);
 			email.setSubject("Validate");
 			// fallback
 			email.setTextMsg("Your email client does not support html");
@@ -81,6 +85,8 @@ public class EmailManagerImpl implements EmailManager {
 			thread.start();
 		} catch (EmailException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -94,7 +100,7 @@ public class EmailManagerImpl implements EmailManager {
 			scanner.close();
 		}
 		for(String keys : mappings.keySet()){
-			s.replace(keys, mappings.get(keys));
+			s = s.replace(keys, mappings.get(keys));
 		}
 		return s;
 	}
