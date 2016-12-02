@@ -15,5 +15,5 @@ public interface MemberService {
 	
     List<Member> getMembers();
 
-    Member getMemberByID(Integer id);
+    Member getMemberById(Integer id);
 }

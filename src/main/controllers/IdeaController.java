@@ -53,7 +53,7 @@ public class IdeaController {
 		//Generate unique id
 		int id;
 		do{
-			id = random.nextInt();
+			id = random.nextInt(Integer.MAX_VALUE);
 		}while(ideaService.getIdeaByID(id) != null);//If id exists, generate new id
 		idea.setId(id);
 		//Trim strings

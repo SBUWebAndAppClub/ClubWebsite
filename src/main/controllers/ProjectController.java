@@ -26,9 +26,9 @@ public class ProjectController {
 		return "projects";
 	}
 
-	@RequestMapping(value = "/project/{name}", method = RequestMethod.GET)
-	public String project(@PathVariable String name, Model model) {
-		model.addAttribute("project", projectService.getProjectByName(name));
+	@RequestMapping(value = "/project/{id}", method = RequestMethod.GET)
+	public String project(@PathVariable int id, Model model) {
+		model.addAttribute("project", projectService.getProjectById(id));
 		return "project";
 	}
 

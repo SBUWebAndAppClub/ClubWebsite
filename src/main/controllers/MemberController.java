@@ -23,7 +23,7 @@ public class MemberController {
 
     @RequestMapping(value = "/member/{id}")
     public String member(@PathVariable Integer id, Model model) {
-        model.addAttribute("member", memberService.getMemberByID(id));
+        model.addAttribute("member", memberService.getMemberById(id));
         return "/member";
     }
 

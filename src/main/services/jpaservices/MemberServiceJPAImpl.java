@@ -27,7 +27,7 @@ public class MemberServiceJPAImpl implements MemberService {
     }
 
     @Override
-    public Member getMemberByID(Integer id) {
+    public Member getMemberById(Integer id) {
         return emf.createEntityManager().find(Member.class, id);
     }
 

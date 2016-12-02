@@ -16,11 +16,11 @@ public class RelationManager {
 	@Autowired
 	private ProjectService projectService;
 	
-	public void createMemberToProjectRelation(int member, String project){
+	public void createMemberToProjectRelation(int member, int project){
 		//Get entities from database.
-		Member m = memberService.getMemberByID(member);
+		Member m = memberService.getMemberById(member);
 		if(m == null)throw new IllegalArgumentException("Could not find project with that name!");
-		Project p = projectService.getProjectByName(project);
+		Project p = projectService.getProjectById(project);
 		if(p == null)throw new IllegalArgumentException("Could not find member with that id!");
 		//Add entities to each other.
 		m.getProjects().add(p);

@@ -26,9 +26,9 @@ public class ProjectServiceJPAImpl implements ProjectService {
 		return em.createQuery("from Project", Project.class).getResultList();
 	}
 	
-    public Project getProjectByName(String name) {
+    public Project getProjectById(int id) {
     	EntityManager em = emf.createEntityManager();
-        return em.find(Project.class, name);
+        return em.find(Project.class, id);
     }
     
     public void createProject(Project project){
