@@ -1,8 +1,11 @@
 package main.controllers;
 
-import main.modelpojos.Idea;
-import main.services.serviceinterfaces.EmailManager;
-import main.services.serviceinterfaces.IdeaService;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.Random;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.math.BigInteger;
-import java.security.SecureRandom;
-
-import javax.validation.Valid;
+import main.modelpojos.Idea;
+import main.services.serviceinterfaces.EmailManager;
+import main.services.serviceinterfaces.IdeaService;
 
 @Controller
 public class IdeaController {
@@ -43,11 +45,17 @@ public class IdeaController {
 		return "form";
 	}
 	
-	private static SecureRandom random = new SecureRandom();
+	private static SecureRandom secureRandom = new SecureRandom();
+	private static Random random = new Random();
 	
-	// TODO Send email to stonybrook email to check its validity.
 	@RequestMapping(value = "ideas/new", method = RequestMethod.POST)
 	public String postIdea(@ModelAttribute @Valid Idea idea, BindingResult bindingResult) {
+		//Generate unique id
+		int id;
+		do{
+			id = random.nextInt();
+		}while(ideaService.getIdeaByID(id) != null);//If id exists, generate new id
+		idea.setId(id);
 		//Trim strings
 		idea.setName(idea.getName().trim());
 		idea.setDescription(idea.getDescription().trim());
@@ -56,11 +64,11 @@ public class IdeaController {
 		if (bindingResult.hasErrors()) {
 			return "form";
 		}
-		idea.setVerificationLink(new BigInteger(130, random).toString(32));
+		idea.setVerificationLink(new BigInteger(130, secureRandom).toString(32));
 		idea.setVerified(false);
 		ideaService.createIdea(idea);
 		emailManager.verifyEmail(idea);
-		return "redirect:/idea/" + idea.getId();
+		return "redirect:/ideas";
 	}
 
 	@RequestMapping(value = "/idea/{id}")
