@@ -10,6 +10,7 @@ import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import main.modelpojos.Idea;
@@ -68,7 +69,7 @@ public class EmailManagerImpl implements EmailManager {
 			String url = "http://localhost:8080/idea/" + idea.getId() + "/" + idea.getVerificationLink() + "/";
 			HashMap<String, String> mappings = new HashMap<String, String>();
 			mappings.put("$url", url);
-			String htmail = readTextFile("src/main/resources/templates/email_validation.html", mappings);
+			String htmail = readTextFile(mappings);
 			email.setHtmlMsg(htmail);
 			email.setSubject("Validate");
 			// fallback
@@ -90,8 +91,11 @@ public class EmailManagerImpl implements EmailManager {
 		}
 	}
 	
-	private String readTextFile(String aFileName, HashMap<String, String> mappings) throws IOException {
-		Path path = Paths.get(aFileName);
+	@Value(value = "classpath:templates/email_validation.html")
+	private Resource emailHTMLResource;
+	
+	private String readTextFile(HashMap<String, String> mappings) throws IOException {
+		Path path = Paths.get(emailHTMLResource.getURI());
 		String s = "";
 		try (Scanner scanner = new Scanner(path)) {
 			while (scanner.hasNextLine()) {
