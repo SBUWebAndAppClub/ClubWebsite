@@ -84,7 +84,7 @@ public class IdeaController {
 	@RequestMapping(value = "/idea/{id}/{verification}")
 	public String idea(@PathVariable Integer id, @PathVariable String verification, Model model) {
 		Idea idea = ideaService.getIdeaByID(id);
-		if(idea == null || !idea.getVerificationLink().equals(verification)){//If idea doesn't exist or verification string doesn't match!
+		if(idea == null || !idea.getVerificationLink().equals(verification) || idea.isVerified()){//If idea doesn't exist or verification string doesn't match! or already verified
 			return "error/404";
 		}
 		idea.setVerified(true);
