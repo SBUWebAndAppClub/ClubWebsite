@@ -53,27 +53,29 @@ public class SpringJPABootstrap  implements ApplicationListener<ContextRefreshed
         m1.setFullName("Daniel Eliasinski");
         m1.setEmail("nope@stonybrook.edu");
         m1.setMajor("Computer Science");
-        m1.setImagePath("None");
+        m1.setImagePath("https://storage.googleapis.com/imgfave/image_cache/1405665241680752.jpg");
         m1.setUrls(new String[]{"/projects/Club%20Website Club project", "https://www.google.com/ Google Website"});
-        m1.setBio("Just a kid tryin' to live");
+        m1.setBio("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
         m1.setProjects(new HashSet<Project>());
 
         Member m2 = new Member();
         m2.setId(r.nextInt(Integer.MAX_VALUE));
-        m2.setFullName("otehr guy");
+        m2.setFullName("Armando Xhimanki");
         m2.setEmail("sup@stonybrook.edu");
         m2.setMajor("Science");
-        m2.setImagePath("None");
+        m2.setImagePath("https://storage.googleapis.com/imgfave/image_cache/1405665241680752.jpg");
         m2.setUrls(new String[]{"/projects/Club%20Website Club project", "https://www.google.com/ Google Website"});
+        m2.setBio("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
         m2.setProjects(new HashSet<Project>());
 
         Member m3 = new Member();
         m3.setId(r.nextInt(Integer.MAX_VALUE));
-        m3.setFullName("another guy");
+        m3.setFullName("Donald Trump");
         m3.setEmail("hey@stonybrook.edu");
         m3.setMajor("Computer");
-        m3.setImagePath("None");
+        m3.setImagePath("http://static6.businessinsider.com/image/55918b77ecad04a3465a0a63/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners.jpg");
         m3.setUrls(new String[]{"/projects/Club%20Website Club project", "https://www.google.com/ Google Website"});
+        m3.setBio("“Trump steaks, where are the steaks? Do we have the steaks?” he said. “We have Trump steaks. And by the way, you want to take one, we charge you about, what, 50 bucks a steak? Nah, I won’t.”");
         m3.setProjects(new HashSet<Project>());
 
         Project p1 = new Project();

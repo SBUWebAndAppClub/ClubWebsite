@@ -1,158 +1,98 @@
-/* MOBILE VIEW CSS
-   Set the cut off size to 768px width? */
+/* CSS styling for mobile */
 
-/* CSS FOR THE NORMAL VIEW OF THE WEBSITE GOES HERE */
+@media screen and (max-width: 640px) { /* Define max width for this style to be used. This supports up to most tablets and phones. */
+  /* GLOBAL PROPERTIES */
 
+  h1 {
+      font-size: 38px;
+  }
 
-/* GLOBAL PROPERTIES */
-*{
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    color: #222222;
-    text-rendering: optimizeLegibility;
-    font-family: Hind Siliguri;
-    background: #222;
-
-}
-
-h1 {
-    font-family: 'Montserrat';
-    text-transform: uppercase;
-    bottom: 80px;
-    font-size: 78px;
-    color: #fff;
-    padding: 10px 0;
-    text-shadow: 2px 2px 3px rgba(45, 45, 45, 0.21);
-}
-
-h2 {
-    font-family: "Montserrat";
-    font-weight: 300;
-    color: #fff;
-    text-transform: uppercase;
-    bottom: 0;
-}
-
-.divider {
+  .top {
+    width: 180px;
     border-bottom: 3px solid #ec0d34;
-    position: absolute;
-    bottom: 110px;
-    height: 2px;
-    width: 480px;
-    margin: 0 50px;
-}
+    bottom: 90px;
+    margin: 0 20px;
+  }
 
-/* LANDING */
+  /* LANDING */
+  #bg {
+        background-position: center center;
+  }
 
-#bg {
-    background: url("https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=1553833461bcefe43b8952a0644c476c");
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    opacity: .9;
-    z-index: -2;
-    backface-visibility: hidden;
-    background-attachment: fixed;
-}
+  #landing h1, h2 {
+      position: absolute;
+      padding: 20px;
+  }
 
-#landing {
-    margin: 0px;
-}
-
-#landing h1, h2 {
-    position: absolute;
-    padding: 50px;
-}
-
-#socialLinks li  { /* Style the list items in the social nav menu */
-    display: inline; /* Keeps the list horizontal */
-}
-
-.staticMenuItem {
-    display: inline;
-    padding: 20px;
+  #topMenu li {
+    padding: 10px 15px;
     transition: all .3s;
+    list-style: none;
+    font-size: 11px;
+    display: block;
+  }
+
+  .staticMenuItem {
+    display: none;
+  }
+
+  #hamburgerbutton {
+    display: inline-block;
+transition: all .3s;
+width: 100%;
+height:60px;
+  }
+
+  #menuList {
+    padding: 0;
+        height: 60px;
+  }
+
+  #mobileMenu {
+    /*display: none;
+ opacity: 0;*/
+ height: 0px;
+ position: fixed;
+ top: 60px;
+ width: 100%;
+ z-index: 999;
+ background: rgba(255, 255, 255, 0.95);
+ transition: all .3s;
+  }
+
+  .mobileMenuItem {
+    text-align: center;
+  }
+
+  /* MEMBERS */
+  .polaroid {
+    -webkit-flex: 1;
+       -ms-flex: 1;
+       flex: 1; /*  Needed so the elements actually wrap */
+  }
+
+  /* PROJECTS */
+  .projects article {
+    padding: 1.75em 1.75em 0.1em 1.75em;
+    background-color: #ec0d34;
+    margin: 1.5em 0;
+    border-radius: 5px;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  /* JOIN US */
+  #details {
+      display: block; /* Makes block sizes larger for mobile devices. */
+  }
+
+.details {
+  border-bottom: 1px #fff solid;
+  border-left: none;
+      width: 100%;
 }
-
-.staticMenuItem:hover {
-    background-color: rgba(164, 164, 164, 0.6);
+  .details:last-child {
+    border-bottom: none;
 }
-
-#topMenu {
-    position: relative;
-    padding: 30px 0;
-    text-transform: uppercase;
-    background: linear-gradient(to top,rgba(0,0,0,0) 0,rgba(79, 79, 79, 0.4) 50%,rgba(29, 29, 29, 0.7) 100%);
-}
-
-#topMenu li {
-    display: inline;
-    padding: 15px 25px;
-    margin: 0 10px;
-    transition: all .3s;
-}
-
-#topMenu li:hover {
-    outline: 3px solid #ec0d34;
-    transition: all .3s;
-}
-
-#landing a {
-    font-family: "Montserrat";
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-.hidden {
-    transform: translateY(-100px);
-    transition: all .3s;
-}
-
-#menuList {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    box-shadow: rgba(0,0,0,0.3) 0 0 10px;
-    z-index: 999;
-    transition: .3s;
-    box-sizing: border-box; /* Needed to keep the navbar width within the confines of the page */
-}
-
-#menuList a {
-    color: #222 !important; /* Override the original color in the #landing div */
-}
-
-#topMenuList {
-    padding: 20px;
-    width: 100%;
-    z-index: 999;
-    box-sizing: border-box;
-}
-
-#hamburgerbutton {
-    display: none; /* Hidden by default */
-}
-
-.red {
-    color: #ec0d34;
-}
-
-#brand {
-    height: 100%;
-}
-
-/* ABOUT */
-
-#about {
-    margin: 50px;
-}
-
-#about p {
-    color: #fff;
 }

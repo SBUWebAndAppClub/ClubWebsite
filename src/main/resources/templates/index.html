@@ -4,320 +4,349 @@
     <title>SBUWADC</title>
 
     <!-- Some META stuff -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"></meta>
-    <meta name="description" content="A responsive one-page template created out of my boredom."></meta>
-    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <meta name="description" content="A responsive one-page template created out of my boredom."/>
+    <meta charset="UTF-8"/>
 
     <!-- CSS -->
     <!-- Just adding some possible font choices from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Hind+Siliguri" rel="stylesheet"></link>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"></link>
-    <link href="css/regular.css" rel="stylesheet" type="text/css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Hind+Siliguri" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+    <link href="css/regular.css" rel="stylesheet" type="text/css"/>
+    <link href="css/mobile.css" rel="stylesheet" type="text/css"/>
     <!-- Different font families are separated by the '|' character -->
 
     <!-- JS (if async) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!-- JQuery CDN -->
-    <!-- Put jQuery first so other frameworks will work correctly. Don't use async. -->
+    <!-- Put jQuery first so other frameworks will work correctly. Don't use async="async". -->
 
-    <script async="async" src="js/app.js"/>
     <script async="async" src="js/smoothscroll.js"></script>
     <script src="https://use.fontawesome.com/a696b91557.js"></script>
-    <!--<script async src="js/colortransition.js"></script>-->
+    <!--<script async="async" src="js/colortransition.js"></script>-->
     <!-- Use font Awesome for the Hamburger Menu Icon -->
 
 </head>
 
 <body>
 
-<div id="landing">
-    <!-- Div to hold the Hero Image -->
-    <div id="bg"></div>
+    <div id="landing">
+        <!-- Div to hold the Hero Image -->
+        <div id="bg"></div>
 
-    <!-- The shadow menu that will drop down when scrolling down -->
-    <div id="staticMenu">
-        <!-- Hidden class hides the menu initially -->
-        <ul id="menuList" class="hidden">
-            <!-- Unordered list of the menu items -->
-            <div id="hamburgerButton" class="staticMenuItem">
-                <!-- Hamburger button. Only shown in the mobile view -->
-                <i class="menuicon fa fa-bars" aria-hidden="true"></i>
-                <!-- Icon tag. Font Awesome needs to be imported to use this -->
-            </div>
+        <!-- The shadow menu that will drop down when scrolling down -->
+        <div id="staticMenu">
+            <!-- Hidden class hides the menu initially -->
+            <ul id="menuList" class="hidden">
+                <!-- Unordered list of the menu items -->
+                <div id="hamburgerButton" class="menu">
+                    <!-- Hamburger button. Only shown in the mobile view -->
+                    <!--<i class="menuicon fa fa-bars" aria-hidden="true"></i>-->
+                    <!-- Icon tag. Font Awesome needs to be imported to use this -->
+                    <span></span>
+                </div>
 
-            <a class="smoothScroll" href="#about">
-                <!-- href points to a div in the website for the browser to scroll down to -->
-                <li class="staticMenuItem">About</li>
-                <!-- The actual menu item itself -->
-            </a>
+                <a class="smoothScroll" href="#about">
+                    <!-- href points to a div in the website for the browser to scroll down to -->
+                    <li class="staticMenuItem">About</li>
+                    <!-- The actual menu item itself -->
+                </a>
 
-            <a class="smoothScroll" href="#members">
-                <li class="staticMenuItem">Members</li>
-            </a>
+                <a class="smoothScroll" href="#members">
+                    <li class="staticMenuItem">Members</li>
+                </a>
 
-            <a class="smoothScroll" href="#projects">
-                <li class="staticMenuItem">Projects</li>
-            </a>
+                <a class="smoothScroll" href="#projects">
+                    <li class="staticMenuItem">Projects</li>
+                </a>
 
-            <a class="smoothScroll" href="#join">
-                <li class="staticMenuItem">Join</li>
-            </a>
+                <a class="smoothScroll" href="#join">
+                    <li class="staticMenuItem">Join Us</li>
+                </a>
+
+                <a class="smoothScroll" href="#join">
+                    <li class="staticMenuItem signin"><i class="fa fa-sign-in" aria-hidden="true"></i>     Sign In</li>
+                </a>
             </ul>
+        </div>
+
+<!-- DROP DOWN MOBILE MENU -->
+        <div id="dropDownMenuContainer">
+       <div id="dropDownMenuCenter" class="center">
+       <ul id="dropDownMenu">
+        <a class="smoothScroll" href="#about">
+                   <li class="mobileMenuItem" onclick="updateMobileMenu(true);">About</li>
+               </a>
+                 <a class="smoothScroll" href="#members" onclick="updateMobileMenu(true);">
+                     <li class="mobileMenuItem">Members</li></a>
+                 <a class="smoothScroll" href="#projects" onclick="updateMobileMenu(true);">
+                     <li class="mobileMenuItem">Projects</li></a>
+               <a class="smoothScroll" href="#join" onclick="updateMobileMenu(true);">
+                   <li class="mobileMenuItem">Join Us</li>
+               </a>
+       </ul>
+     </div>
+   </div>
+
+        <!-- Social media links -->
+        <div id="socialLinks" style="display:none">
+            <ul>
+                <!-- Unordered list structure -->
+                <a href="https://facebook.com">
+                    <!-- Always wrap the link around the list item -->
+                    <li>Facebook</li>
+                </a>
+                <a href="https://twitter.com">
+                    <li>Twitter</li>
+                </a>
+                <a href="https://plus.google.com">
+                    <li>Google+</li>
+                </a>
+                <a href="https://myspace.com">
+                    <li>Mypsace (still alive)</li>
+                </a>
+            </ul>
+        </div>
+
+        <!-- Basic structure for the navigation menu -->
+        <div id="topMenu">
+            <!-- Container for the actual menu. -->
+
+            <ul id="topMenuList">
+                <!-- This menu is located at the top of the landing -->
+                <!-- Unordered list of the menu items -->
+                <a class="smoothScroll" href="#about">
+                    <!-- href points to a div in the website for the browser to scroll down to -->
+                    <li class="headitem">About</li>
+                    <!-- The actual menu item itself -->
+                </a>
+
+                <a class="smoothScroll" href="#members">
+                    <li>Members</li>
+                </a>
+
+                <a class="smoothScroll" href="#projects">
+                    <li>Projects</li>
+                </a>
+
+                <a class="smoothScroll" href="#join">
+                    <li>Join Us</li>
+                </a>
+            </ul>
+        </div>
+
+
+        <!-- Landing content should go here -->
+        <div id="brand">
+            <h1><span class="red">SBU</span> Web<br/>and App Development Club</h1>
+            <div class="divider top"></div>
+            <h2>The best damn club in the world.</h2>
+        </div>
+
     </div>
 
-    <!-- Social media links -->
-    <div id="socialLinks" style="display:none">
-        <ul>
-            <!-- Unordered list structure -->
-            <a href="https://facebook.com">
-                <!-- Always wrap the link around the list item -->
-                <li>Facebook</li>
-            </a>
-            <a href="https://twitter.com">
-                <li>Twitter</li>
-            </a>
-            <a href="https://plus.google.com">
-                <li>Google+</li>
-            </a>
-            <a href="https://myspace.com">
-                <li>Mypsace (still alive)</li>
-            </a>
-        </ul>
+    <!-- The first section of the website -->
+    <div id="about" class="section">
+        <div class="content">
+            <h3>About Website</h3>
+            <div class="divider"></div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
     </div>
 
-    <!-- Basic structure for the navigation menu -->
-    <div id="topMenu">
-        <!-- Container for the actual menu. -->
-
-        <ul id="topMenuList">
-            <!-- This menu is located at the top of the landing -->
-            <!-- Unordered list of the menu items -->
-            <a class="smoothScroll" href="#about">
-                <!-- href points to a div in the website for the browser to scroll down to -->
-                <li class="headitem">About</li>
-                <!-- The actual menu item itself -->
-            </a>
-
-            <a class="smoothScroll" href="#members">
-                <li>Members</li>
-            </a>
-
-            <a class="smoothScroll" href="#projects">
-                <li>Projects</li>
-            </a>
-
-            <a class="smoothScroll" href="#join">
-                <li>Join Us</li>
-            </a>
-        </ul>
-    </div>
-
-
-    <!-- Landing content should go here -->
-    <div id="brand">
-        <h1><span class="red">SBU</span> Web<br>and App Development Club</br></h1>
-        <div class="divider top"></div>
-        <h2>The best damn club in the world.</h2>
-    </div>
-
-</div>
-
-<!-- The first section of the website -->
-<div id="about" class="section">
-    <div class="content">
-        <h3>About Website</h3>
-        <div class="divider"></div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    </div>
-</div>
-
-<!-- Members -->
-<div id="members" class="section">
-    <div class="content">
-        <h3 class="dark">Members</h3>
-        <div class="divider"></div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <div class="members">
-            <div class="polaroid">
-                <img  class="polaroidbg" src="http://www.w3schools.com/css/rock600x400.jpg"> </img>
-                <img class="avatar" src="http://orig04.deviantart.net/aded/f/2013/066/c/2/profile_picture_by_naivety_stock-d5x8lbn.jpg" alt="Norway"></img>
-
+    <!-- Members -->
+    <div id="members" class="section">
+        <div class="content">
+            <h3 class="dark">Members</h3>
+            <div class="divider"></div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <div class="members" th:with="size=35"> <!-- Size sets how many characters can show up in the bio. -->
+              <div class="polaroid">
+                <img  class="polaroidbg" src="http://www.fairobserver.com/wp-content/uploads/2013/05/shutterstock_88454563.jpg"/>
+                <img class="avatar" th:src="${member1.imagePath}" alt="Member Picture"/>
                 <div class="container">
-                    <h5>Armando</h5>
-                    <p>The Troll's tongue in Hardanger, Norway</p>
+                  <h5 th:text="${#strings.substringBefore(member1.fullName, ' ')}">Member 1</h5>
+                  <p th:text="${#strings.abbreviate(member1.bio, size)}">The Troll's tongue in Hardanger, Norway</p>
                 </div>
                 <div class="user-social">
-                    <ul class="profile-social-links">
+                  <ul class="profile-social-links">
                         <!-- Facebook -->
                         <li>
-                            <a href="#">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg"></img>
-                            </a>
+                          <a href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg"/>
+                          </a>
                         </li>
                         <!-- Twitter -->
                         <li>
-                            <a href="#">
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"></img>
-                            </a>
+                          <a href="#">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"/>
+                          </a>
                         </li>
                         <!-- Github -->
                         <li>
-                            <a href="#">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></img>
-                            </a>
+                          <a href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"/>
+                          </a>
                         </li>
                     </ul>
                 </div>
-            </div>
+              </div>
 
-            <div class="polaroid">
-                <img src="http://bunow.com/wp-content/uploads/2016/11/TRUMP-make-america-great-again_6005.jpg" class="polaroidbg"></img>
-                <img class="avatar" src="http://trump.frost.works/images/avatar.png" alt="Norway"></img>
+              <div class="polaroid">
+                <img src="http://www.fairobserver.com/wp-content/uploads/2013/05/shutterstock_88454563.jpg" class="polaroidbg"/>
+                <img class="avatar" th:src="${member2.imagePath}" alt="Member Picture"/>
                 <div class="container">
-                    <h5>Armando</h5>
-                    <p>The Troll's tongue in Hardanger, Norway</p>
+                  <h5 th:text="${#strings.substringBefore(member2.fullName, ' ')}">Member 2</h5>
+                  <p th:text="${#strings.abbreviate(member2.bio, size)}">The Troll's tongue in Hardanger, Norway</p>
                 </div>
-                <ul class="profile-social-links">
-                    <!-- Facebook -->
-                    <li>
-                        <a href="#">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg"></img>
-                        </a>
-                    </li>
-                    <!-- Twitter -->
-                    <li>
-                        <a href="#">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"></img>
-                        </a>
-                    </li>
-                    <!-- Github -->
-                    <li>
-                        <a href="#">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></img>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <div class="user-social">
+                  <ul class="profile-social-links">
+                        <!-- Facebook -->
+                        <li>
+                          <a href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg"/>
+                          </a>
+                        </li>
+                        <!-- Twitter -->
+                        <li>
+                          <a href="#">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"/>
+                          </a>
+                        </li>
+                        <!-- Github -->
+                        <li>
+                          <a href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"/>
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+              </div>
 
-            <div class="polaroid">
-                <img src="http://bunow.com/wp-content/uploads/2016/11/TRUMP-make-america-great-again_6005.jpg" class="polaroidbg"></img>
-                <img class="avatar" src="http://trump.frost.works/images/avatar.png" alt="Norway"></img>
+              <div class="polaroid">
+                <img src="http://www.fairobserver.com/wp-content/uploads/2013/05/shutterstock_88454563.jpg" class="polaroidbg"/>
+                <img class="avatar" th:src="${member3.imagePath}" alt="Member Picture"/>
                 <div class="container">
-                    <h5>Armando</h5>
-                    <p>The Troll's tongue in Hardanger, Norway</p>
+                  <h5 th:text="${#strings.substringBefore(member3.fullName, ' ')}">Member 3</h5>
+                  <p th:text="${#strings.abbreviate(member3.bio, size)}">The Troll's tongue in Hardanger, Norway</p>
                 </div>
-                <ul class="profile-social-links">
-                    <!-- Facebook -->
-                    <li>
-                        <a href="#">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg"></img>
-                        </a>
-                    </li>
-                    <!-- Twitter -->
-                    <li>
-                        <a href="#">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"></img>
-                        </a>
-                    </li>
-                    <!-- Github -->
-                    <li>
-                        <a href="#">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></img>
-                        </a>
-                    </li>
-                </ul>
+                <div class="user-social">
+                  <ul class="profile-social-links">
+                        <!-- Facebook -->
+                        <li>
+                          <a href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg"/>
+                          </a>
+                        </li>
+                        <!-- Twitter -->
+                        <li>
+                          <a href="#">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"/>
+                          </a>
+                        </li>
+                        <!-- Github -->
+                        <li>
+                          <a href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"/>
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+
             </div>
 
+            <ul class="actions">
+										<li><a href="/members" class="button"><i class="fa fa-align-justify" aria-hidden="true">  </i>  Browse All</a></li>
+									</ul>
         </div>
-
-        <ul class="actions">
-            <li><a href="#" class="button"><i class="fa fa-align-justify" aria-hidden="true">  </i>  Browse All</a></li>
-        </ul>
     </div>
-</div>
 
-<!-- Projects. -->
-<div id="projects" class="section">
-    <div class="content">
-        <h3>Projects</h3>
-        <div class="divider"></div>
-        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-        </p>
-        <div class="projects">
-            <article>
-                <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/24078/screenshots/3104291/b_white.jpg" alt=""></img></a>
-                <h4 class="major">Sed feugiat lorem</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-                <a href="#"><button class="btn btnwhite">Learn more</button></a>
-            </article>
-            <article>
-                <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/25514/screenshots/3104971/web-sales-platform-design-ramotion.png" alt=""></img></a>
-                <h4 class="major">Sed feugiat lorem</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-                <a href="#"><button class="btn btnwhite">Learn more</button></a>
-            </article>
-            <article>
-                <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/642843/screenshots/3104623/lylat_dribbble.jpg" alt=""></img></a>
-                <h4 class="major">Sed feugiat lorem</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-                <a href="#"><button class="btn btnwhite">Learn more</button></a>
-            </article>
-            <article>
-                <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/371094/screenshots/3104627/preacher_1x.png" alt=""></img></a>
-                <h4 class="major">Sed feugiat lorem</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-                <a href="#"><button class="btn btnwhite">Learn more</button></a>
-            </article>
-        </div>
+    <!-- Projects. -->
+    <div id="projects" class="section">
         <div class="content">
-            <a href="#"><button class="btn btnwhite">More projects</button></a>
-        </div>
+            <h3>Projects</h3>
+            <div class="divider"></div>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            </p>
+            <div class="projects">
+                <article>
+                    <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/24078/screenshots/3104291/b_white.jpg" alt=""/></a>
+                    <h4 class="major">Sed feugiat lorem</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+                    <a href="#"><button class="btn btnwhite">Learn more</button></a>
+                </article>
+                <article>
+                    <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/25514/screenshots/3104971/web-sales-platform-design-ramotion.png" alt=""/></a>
+                    <h4 class="major">Sed feugiat lorem</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+                    <a href="#"><button class="btn btnwhite">Learn more</button></a>
+                </article>
+                <article>
+                    <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/642843/screenshots/3104623/lylat_dribbble.jpg" alt=""/></a>
+                    <h4 class="major">Sed feugiat lorem</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+                    <a href="#"><button class="btn btnwhite">Learn more</button></a>
+                </article>
+                <article>
+                    <a href="#" class="image"><img src="https://d13yacurqjgara.cloudfront.net/users/371094/screenshots/3104627/preacher_1x.png" alt=""/></a>
+                    <h4 class="major">Sed feugiat lorem</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+                    <a href="#"><button class="btn btnwhite">Learn more</button></a>
+                </article>
+            </div>
+            <div class="content">
+              <a href="/projects"><button class="btn btn-more">More projects</button></a>
+            </div>
 
-    </div>
-</div>
+          </div>
+        </div>
 
 <!-- Join -->
 <div id="join" class="section">
 
-    <div class="content">
-        <h3 style="text-align: center;">Join Us</h3>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        <div id="details">
-            <div id="location" class="details">
-                <h5>Location</h5>
-                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.1502723742174!2d-73.12467068450844!3d40.91245087931065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e83f31d26cce65%3A0x2165176f83301182!2sOld+Computer+Science!5e0!3m2!1sen!2sus!4v1479690337991"; frameborder="0" style="border:0;width: 100%; height: 30%" allowfullscreen></iframe>-->
-            </div>
+  <div class="content">
+      <h3 style="text-align: center;">Join Us</h3>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      <div id="details">
+          <div id="location" class="details">
+              <h5>Location</h5>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.1502723742174!2d-73.12467068450844!3d40.91245087931065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e83f31d26cce65%3A0x2165176f83301182!2sOld+Computer+Science!5e0!3m2!1sen!2sus!4v1479690337991" frameborder="0" style="border:0;width: 100%; height: 30%" allowfullscreen="allowfullscreen"></iframe>
+          </div>
 
-            <div id="times" class="details">
+          <div id="times" class="details">
                 <h5>Times</h5>
                 <p style="font-weight: bold;">Wednesdays</p>
                 <p>1:00pm - 2:00pm</p>
                 <p style="font-weight: bold;">Fridays</p>
-                <p>2:30pm - 3:20pm</p>
-            </div>
+                <p>2:30pm - 4:00pm</p>
+          </div>
 
-            <div id="contact" class="details">
+          <div id="contact" class="details">
                 <h5>Connect</h5>
-                <p><a href="mailto:">Club Email</a></p>
-                <p><a href="#:">Facebook Group</a></p>
-                <p><a href="#:">Slack Team</a></p>
-            </div>
-        </div>
+                <!-- Add font awesome for each social network service -->
+      <p><a href="mailto:sbuwebappclub@gmail.com"><i style="padding-right: 10px;" class="fa fa-envelope" aria-hidden="true"></i>Club Email</a></p>
+      <p><a href="https://www.facebook.com/groups/318738988305571/?ref=nf_target&fref;=nf"><i style="padding-right: 10px;" class="fa fa-facebook-official" aria-hidden="true"></i>Facebook Group</a></p>
+      <p><a href="https://sbuwebappclub.slack.com/messages/general/"><i style="padding-right: 10px;" class="fa fa-slack" aria-hidden="true"></i>Slack Team</a></p>
+          </div>
+      </div>
 
-        <a href="#"><button class="btn btnwhite" style="margin-top: 50px;">Join Us</button></a>
-    </div>
+      <a href="#"><button class="btn btn-join" style="margin-top: 20px;">Join Us</button></a>
+</div>
 
 </div>
 </body>
 
 <footer>
     <div id="footer">
-        <h2>SBUWADC</h2>
-        <p>Building something you love.</p>
-        <p>
+      <h2>SBUWADC</h2>
+      <p>Building something you love.</p>
+    <p>
       <span>
     Made with <i class="fa fa-heart pulse"></i> in <a href="https://www.google.com/maps/place/Stony+Brook+University/@40.9123761,-73.1255829,17z/data=!3m1!4b1!4m5!3m4!1s0x89e83f33e67438bf:0x734c1ca56abdcc85!8m2!3d40.9123761!4d-73.1233889?hl=en" target="_blank">Stony Brook</a>
 </span></p>
     </div>
+
+    <script async="async" src="js/app.js"></script>
 </footer>
 
 </html>

@@ -2,9 +2,11 @@ package main.modelpojos;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
@@ -16,6 +18,9 @@ public class Member {
 
 	private String fullName;
 	private String email, major, imagePath;
+	
+	@Column(length=1000000)
+	@Lob
 	private String bio;
 
 	@ManyToMany
