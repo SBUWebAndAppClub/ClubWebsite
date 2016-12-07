@@ -59,19 +59,19 @@ public class EmailManagerImpl implements EmailManager {
 			email.setMsg("Test Message from Armando Xhimanki. ");
 			email.addTo(idea.getEmail());
 			// image
-			StringBuffer msg = new StringBuffer();
+			/*StringBuffer msg = new StringBuffer();
 			msg.append("<html><body>");
 			msg.append("<p>You have sumbitted an idea to (website name here).</p>");
 			msg.append("<a href = http://localhost:8080/idea/").append(idea.getId()).append("/")
 					.append(idea.getVerificationLink()).append(">");
-			msg.append("Click here to verify your email").append("</a>");
+			msg.append("Click here to verify your email").append("</a>");*/
 			// email.setMsg(msg.toString());
 			String url = "http://localhost:8080/idea/" + idea.getId() + "/" + idea.getVerificationLink() + "/";
 			HashMap<String, String> mappings = new HashMap<String, String>();
 			mappings.put("$url", url);
 			String htmail = readTextFile(mappings);
 			email.setHtmlMsg(htmail);
-			email.setSubject("Validate");
+			email.setSubject("Validate your idea");
 			// fallback
 			email.setTextMsg("Your email client does not support html");
 			Runnable run = () -> {
@@ -93,15 +93,22 @@ public class EmailManagerImpl implements EmailManager {
 	
 	@Value(value = "classpath:templates/email_validation.html")
 	private Resource emailHTMLResource;
+	private String emailHtml;
 	
 	private String readTextFile(HashMap<String, String> mappings) throws IOException {
 		Path path = Paths.get(emailHTMLResource.getURI());
-		String s = "";
-		try (Scanner scanner = new Scanner(path)) {
-			while (scanner.hasNextLine()) {
-				s += scanner.nextLine() + "\n";
+		String s;
+		if(emailHtml == null){
+			s = "";
+			try (Scanner scanner = new Scanner(path)) {
+				while (scanner.hasNextLine()) {
+					s += scanner.nextLine() + "\n";
+				}
+				scanner.close();
 			}
-			scanner.close();
+			emailHtml = s;
+		}else{
+			s = emailHtml;
 		}
 		for(String keys : mappings.keySet()){
 			s = s.replace(keys, mappings.get(keys));

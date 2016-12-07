@@ -4,7 +4,7 @@
 <head>
     <title>Thymeleaf best form 2k16</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
 
     <style>
         * {
@@ -13,7 +13,6 @@
             top: 0;
             bottom: 0;
         }
-
         html,
         body {
             font-family: "Raleway", sans-serif;
@@ -26,25 +25,20 @@
             justify-content: center;
             align-items: center;
         }
-
         h1 {
             font-size: 3em;
             display: block;
         }
-
         p {
             font-size: 12px;
         }
-
         #center {
             height: 400px;
             max-width: 50%;
         }
-
         #buttonContainer {
             padding: 10px 10px 10px 0px;
         }
-
         .button {
               position: relative;
               display: inline-block;
@@ -64,23 +58,19 @@
               font-family: Segoe UI;
               float: right;
         }
-
         .button:focus {
             border: #0066FF 1px solid;
             box-shadow: rgba(0,102,255,0.70) 0px 0px 10px;
         }
         /* Button modifiers */
-
         .buttonBlue {
             background: #4a89dc;
             text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
         }
-
         .buttonBlue:hover {
             background: #357bd8;
         }
         /* Ripples container */
-
         .ripples {
             position: absolute;
             top: 0;
@@ -90,7 +80,6 @@
             overflow: hidden;
             background: transparent;
         }
-
         .textfield {
             padding: 10px;
             margin: 10px 0;
@@ -101,24 +90,34 @@
             width: 100%;
             transition: all .2s;
         }
-
         .textfield:focus {
             border: #0066FF;
             box-shadow: #0066FF 0px 0px 10px;
         }
+        
+        .error {
+            color: red;
+            font-size: 16px;
+        }
+        
     </style>
 </head>
 
 <body>
     <div id="center">
-        <h1>Probably the best damn form anyone has ever created.</h1>
-        <br><br>
-        <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post"> <!-- Thymeleaf integration -->
+        <h1>                                   Idea Creation Page                                   </h1>
+        <br/><br/>
+        <form action="#" th:action="@{/ideas/new}" th:object="${idea}" method="post">
+            <p>Idea Name:</p>
+            <input class="textfield" type="text" th:field="*{name}" />
+            <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <p>Description:</p>
+            <input class="textfield" type="text" th:field="*{description}" />
+            <p class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
             <p>Email:</p>
-            <input class="textfield" name="email" type="text" th:field="*{id}" value="">
-            <p>Password:</p>
-            <input class="textfield" name="pass" type="password" th:field="*{password}" value="">
-            <br>
+            <input class="textfield" type="text" th:field="*{email}" />
+            <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <br/>
             <div id="buttonContainer">
                 <input class="button buttonBlue" type="submit" value="Submit" /> <!-- Submits data through a post request -->
                 <input class="button buttonBlue" type="reset" value="Reset" />

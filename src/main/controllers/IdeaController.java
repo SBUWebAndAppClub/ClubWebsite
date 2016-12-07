@@ -2,6 +2,8 @@ package main.controllers;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import javax.validation.Valid;
@@ -33,7 +35,13 @@ public class IdeaController {
 	}
 	@RequestMapping(value = "/ideas")
 	public String ideaList(Model model) {
-		model.addAttribute("ideas", ideaService.getIdeas());
+		List<Idea> ideas = ideaService.getIdeas();
+		Iterator<Idea> i = ideas.iterator();
+		while(i.hasNext()){
+			if(!i.next().isVerified())
+				i.remove();
+		}
+		model.addAttribute("ideas", ideas);
 		return "ideas";
 	}
 
