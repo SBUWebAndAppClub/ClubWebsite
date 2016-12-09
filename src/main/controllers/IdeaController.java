@@ -84,7 +84,7 @@ public class IdeaController {
 		Idea idea = ideaService.getIdeaByID(id);
 		if(idea == null || !idea.isVerified()){//If idea doesn't exist or hasn't been verified yet!
 			model.addAttribute("error", "Bad Request");
-    		model.addAttribute("status", "402");
+    		model.addAttribute("status", "400");
     		model.addAttribute("message", "The request you sent could not be processed! Check to see if the id is correct. Ideas must be verified before you can view them as well.");
 			return "error";
 		}

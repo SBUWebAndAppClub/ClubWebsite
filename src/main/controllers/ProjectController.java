@@ -32,7 +32,7 @@ public class ProjectController {
 		Project project = projectService.getProjectById(id);
     	if(project == null){
     		model.addAttribute("error", "Bad Request");
-    		model.addAttribute("status", "402");
+    		model.addAttribute("status", "400");
     		model.addAttribute("message", "The request you sent could not be processed! Check to see if the id is correct.");
     		return "error";
     	}
