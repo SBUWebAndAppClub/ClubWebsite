@@ -3,33 +3,83 @@
 <html>
 
 <head>
-	<title>Error</title>
+    <title>Error</title>
+    <style>
+* {
+  box-sizing: border-box;
 
-	<!-- Sets width of page to fit width of screen; sets initial zoom level when page is loaded -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  margin: 0;
+  padding: 0;
 
-	<!-- Import local css style file -->
-	<link th:href = "@{/css/error.css}" type = "text/css" rel = "stylesheet" />
+  font-family: Raleway, Roboto, sans-serif;
+  font-weight: 100;
+  background-color: rgb(242, 242, 242);
+}
 
-	<!-- Import of cool, external fonts: Roboto, Raleway -->
-	<link href = "https://fonts.googleapis.com/css?family=Roboto" rel = "stylesheet"/>
-	<link href = "https://fonts.googleapis.com/css?family=Raleway" rel = "stylesheet"/>
+html, body {
+  height: 100%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+img {
+  margin: 0 auto;
+  width: 5%;
+
+  vertical-align: middle;
+}
+
+#general-error {
+  text-align: center;
+  height: 100%
+}
+
+#general-error h1 {
+  display: block;
+
+  padding-top: 250px;
+  padding-left: auto;
+  padding-right: auto;
+
+  font-size: 95px;
+  font-weight: 900;
+}
+
+#general-error p {
+  padding-top: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  max-width: 100%;
+
+  font-size: 30px;
+}
+    </style>
+
+    <!-- Sets width of page to fit width of screen; sets initial zoom level when page is loaded -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+    <!-- Import of cool, external fonts: Roboto, Raleway -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
 </head>
 
 
 <body>
-<div id = "general-error">
-	<h1>
-		<img src = "http://i.imgur.com/xiEdJso.png" />
-		<span>Oops.</span>
+<div id="general-error">
+    <h1>
+        <img src="http://i.imgur.com/xiEdJso.png"/>
+        <span>Oops.</span>
 
-	</h1>
-	<p>
-		An error as occurred:
-		<span th:text="${status}">500</span>
-		<span th:text="${error}">Bad Request</span> <br />
-		Click <a href = "http://sbuwebapp.com">here</a> to go back to the home page.
-	</p>
+    </h1>
+    <p>
+        An error as occurred:
+        <span th:text="${status}">500</span>
+        <span th:text="${error}">Bad Request</span> <br/>
+        Click <a href="http://sbuwebapp.com">here</a> to go back to the home page.
+    </p>
 
 </div>
 
