@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Error</title>
+
+	<!-- Sets width of page to fit width of screen; sets initial zoom level when page is loaded -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+	<!-- Import local css style file -->
+	<link th:href = "@{/css/error.css}" type = "text/css" rel = "stylesheet" />
+
+	<!-- Import of cool, external fonts: Roboto, Raleway -->
+	<link href = "https://fonts.googleapis.com/css?family=Roboto" rel = "stylesheet"/>
+	<link href = "https://fonts.googleapis.com/css?family=Raleway" rel = "stylesheet"/>
+</head>
+
+
+<body>
+<div id = "general-error">
+	<h1>
+		<img src = "http://i.imgur.com/xiEdJso.png" />
+		<span>Oops.</span>
+
+	</h1>
+	<p>
+		An error as occurred:
+		<span th:text="${status}">500</span>
+		<span th:text="${error}">Bad Request</span> <br />
+		Click <a href = "http://sbuwebapp.com">here</a> to go back to the home page.
+	</p>
+
+</div>
+
+</body>
+
+</html>

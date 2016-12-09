@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import main.modelpojos.Project;
 import main.services.serviceinterfaces.ProjectService;
 
 @Controller
@@ -28,7 +29,14 @@ public class ProjectController {
 
 	@RequestMapping(value = "/project/{id}", method = RequestMethod.GET)
 	public String project(@PathVariable int id, Model model) {
-		model.addAttribute("project", projectService.getProjectById(id));
+		Project project = projectService.getProjectById(id);
+    	if(project == null){
+    		model.addAttribute("error", "Bad Request");
+    		model.addAttribute("status", "402");
+    		model.addAttribute("message", "The request you sent could not be processed! Check to see if the id is correct.");
+    		return "error";
+    	}
+		model.addAttribute("project", project);
 		return "project";
 	}
 
