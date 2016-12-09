@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Raleway, Roboto, sans-serif;
+  font-weight: 100;
+  background-color: rgb(242, 242, 242);
+}
+
+html, body {
+  height: 100%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+img {
+  margin: 0 auto;
+  width: 4%;
+
+  vertical-align: middle;
+}
+
+#error404 {
+  text-align: center;
+  height: 100%
+}
+
+#error404 h1 {
+  display: block;
+
+  padding-top: 250px;
+  padding-left: auto;
+  padding-right: auto;
+
+  font-size: 95px;
+  font-weight: 900;
+}
+
+#error404 p {
+  padding-top: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  max-width: 100%;
+
+  font-size: 30px;
+}
