@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email - Check!</title>
+  <script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous"></script>
+  <style>
+    * {
+      border: 0 solid transparent !important;
+    }
+
+    #top {
+      background: #333;
+      border: solid firebrick 2px;
+      display: flex;
+      flex-grow: 1;
+    }
+
+    #bottom {
+      background: #255;
+      border: solid greenyellow 2px;
+      display: flex;
+      flex-grow: 1;
+    }
+
+    body {
+      font-size: 12px;
+      height: 98.5vh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+
+      display: flex;
+      /* aligns items in x */
+      align-items: center;
+      /* aligns items in y and adds padding between siblings*/
+      justify-content: space-around;
+      /* column aligning */
+      flex-flow: column nowrap;
+      border: solid green 5px;
+    }
+
+    .content {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+      /* align left, middle, right in the center*/
+      justify-content: space-between;
+      border: 10px black solid;
+      flex-grow: 1;
+      /*background: url("../static/img/404.gif") no-repeat 50% 50%;*/
+      background: url("../static/img/poly.png") no-repeat 50% 50%;
+      /*background-size: 100%;*/
+
+    }
+
+    .left {
+      min-width: 10%;
+      min-height: 10%;
+      max-width: 25%;
+      max-height: 25%;
+      border: 2px red solid;
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .middle {
+      border: 2px blue solid;
+      background-size: 100%;
+      background: url("../static/img/logo-placeholder.svg") no-repeat 50% 50%;
+      /* lighten */
+      background-blend-mode: screen;
+
+      min-height: 10%;
+      min-width: 10%;
+      max-width: 25%;
+      max-height: 25%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-content: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .right {
+      border: 2px aqua solid;
+      min-height: 10%;
+      min-width: 10%;
+      max-width: 25%;
+      max-height: 25%;
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    #letter {
+      border: solid aqua 2px;
+      width: 50%;
+      max-width: 100%;
+      /*filter: blur(1px);*/
+      animation: slide 2s linear;
+    }
+
+    .text {
+      max-width: 100%;
+      font-size: 2em;
+      /*display: flex;*/
+      /*flex-flow: column nowrap;*/
+      text-align: center;
+      animation: fade-in 5s ease-in;
+    }
+
+    #mailbox-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    #mailbox-top {
+      border: solid 1px lawngreen;
+      width: 100%;
+      height: 100%;
+      animation: flyaway 1s 1s linear;
+    }
+
+    #mailbox {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: rotate 1s 1s linear infinite;
+    }
+
+    #mailbox-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: red solid 1px;
+    }
+
+    span.users-email {
+      color: darkred;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes flyaway {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(400px, -200px);
+      }
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translate(0vw) skew(-15deg);
+        opacity: 1;
+      }
+      49% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        transform: translate(150vw) skew(-75deg);
+      }
+
+    }
+
+  </style>
+  <script>
+    $(function () {
+      setTimeout(function () {
+        $("#letter").css('visibility', 'hidden');
+        $("#mailbox").css('visibility', 'hidden');
+      }, 2000);
+    });
+
+  </script>
+</head>
+<body>
+<div id="top">
+  <!-- don't know if Ill use this -->
+</div>
+<div class="content">
+  <!--
+    <video autoplay loop muted>
+    <source
+    src="https://d1wst0behutosd.cloudfront.net/videos/12223521/35062773.mp4?Expires=1481326155&Signature=W7qbhXVcSfUo2WZmDX-1MjJSJm80WCYDI1FOXontLgadHVM8O6kyfGmliaVQ4DWN4xzTpHUE~yordm~alsLaAV3N9rnn7nX03riT~lYXY028ciy1m1fjOq2zi-LTv5eVHI1GxXmwv6yZJlHFNo8XZcDIleXm~OJgW-NHVuBNJfsbbxitw87DU8rikkmeVGec7pwKwnavy6GE4UZhMBpGhs9yrMT9LI5EWMsyCgPu-ts8FOIRyzrttTAd8Ft7VwIRZG7pmsl3Ys1T~f2LgtXhfbU7H6M5o1MrnHMnSTtcolpZXb2btvMNT-ghcxQIRNTtA1R6RVFTVKp7xWvwG7U~NQ__&Key-Pair-Id=APKAJJ6WELAPEP47UKWQ"
+    type="video/mp4">
+    </video>
+  -->
+  <div class="left">
+    <img src="../static/img/letter.svg" alt="letter" id="letter">
+  </div>
+  <div class="middle">
+    <p class="text">we just sent an email to <span class="users-email">member@stonybrook.edu</span></p>
+    <p class="text">go verify it</p>
+  </div>
+  <div class="right">
+    <div id="mailbox-container">
+      <!-- div necessary for fly-away animation -->
+      <div id="mailbox-top">
+        <img src="../static/img/mailbox-1.svg" alt="mailbox" id="mailbox">
+      </div>
+      <img src="../static/img/mailbox-2.svg" alt="mailbox" id="mailbox-overlay">
+    </div>
+  </div>
+</div>
+<div id="bottom">
+  <!-- don't know if Ill use this -->
+</div>
+</body>
+</html>
