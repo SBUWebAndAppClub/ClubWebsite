@@ -40,7 +40,8 @@ public class ProjectServiceJPAImpl implements ProjectService {
 
 	@Override
 	public void deleteProject(Project project) {
-		
+		EntityManager em = emf.createEntityManager();
+		em.remove(project);
 	}
 
 	@Override

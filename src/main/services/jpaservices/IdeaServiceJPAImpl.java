@@ -31,7 +31,8 @@ public class IdeaServiceJPAImpl implements IdeaService {
 
 	@Override
 	public void deleteIdea(Idea idea) {
-		
+		EntityManager em = emf.createEntityManager();
+		em.remove(idea);
 	}
 
 	@Override

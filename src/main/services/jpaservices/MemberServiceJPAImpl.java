@@ -49,7 +49,7 @@ public class MemberServiceJPAImpl implements MemberService {
 
 	@Override
 	public void deleteMember(Member member) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = emf.createEntityManager();
+		em.remove(member);
 	}
 }
