@@ -65,7 +65,7 @@ public class IdeaController {
 		int id;
 		do{
 			id = random.nextInt(Integer.MAX_VALUE);
-		}while(ideaService.getIdeaByID(id) != null);//If id exists, generate new id
+		}while(ideaService.getIdeaByID(id) != null);//If id exists, generate new id (Very costly 'cause you look for a key that probably doesn't exist.)
 		idea.setId(id);
 		//Trim strings
 		idea.setName(idea.getName().trim());

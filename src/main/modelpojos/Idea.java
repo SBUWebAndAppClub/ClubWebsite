@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Version;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Idea {
@@ -15,12 +16,13 @@ public class Idea {
 	private Integer version;
 	
 	@Pattern(message = "Can'''t be empty!", regexp = ".*[^ ].*")
+	@Size(message = "Must be longer than 5 characters!", min = 5)
 	private String name;
 	
 	@Pattern(message = "Can'''t be empty!", regexp = ".*[^ ].*")
+	@Size(message = "Must be longer than 30 characters!", min = 30)
 	private String description;
 	
-	//Makes sure the email is a valid Stonybrook email. Doesn't send them an email to check, however.(yet!)
 	@Pattern(message = "Not a stonybrook email!", regexp = "\\S+@stonybrook\\.edu$")
 	private String email;
 	
