@@ -21,6 +21,9 @@ import main.modelpojos.Idea;
 import main.services.serviceinterfaces.EmailManager;
 import main.services.serviceinterfaces.IdeaService;
 
+/**
+ * [[SuppressWarningsSpartan]]
+ */
 @Controller
 public class IdeaController {
 
@@ -76,7 +79,8 @@ public class IdeaController {
 		idea.setVerified(false);
 		ideaService.createIdea(idea);
 		emailManager.verifyEmail(idea);
-		return "redirect:/ideas";
+		
+		return "redirect:/ideas/";
 	}
 
 	@RequestMapping(value = "/idea/{id}")
@@ -91,7 +95,7 @@ public class IdeaController {
 		model.addAttribute("idea", idea);
 		return "idea";
 	}
-	
+
 	@RequestMapping(value = "/idea/{id}/{verification}")
 	public String idea(@PathVariable Integer id, @PathVariable String verification, Model model) {
 		Idea idea = ideaService.getIdeaByID(id);

@@ -79,6 +79,8 @@ public class EmailManagerImpl implements EmailManager {
 					email.send();
 				} catch (EmailException e) {
 					e.printStackTrace();
+					
+					e.getCause().toString();
 				}
 			};
 			Thread thread = new Thread(run);
