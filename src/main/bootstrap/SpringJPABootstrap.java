@@ -60,7 +60,7 @@ public class SpringJPABootstrap  implements ApplicationListener<ContextRefreshed
     private void createMemberAndProjectData() {
     	Random r = new Random();
     	
-        Member m1 = new Member();
+        /*Member m1 = new Member();
         m1.setId(r.nextInt(Integer.MAX_VALUE));
         m1.setFullName("Daniel Eliasinski");
         m1.setEmail("nope@stonybrook.edu");
@@ -88,7 +88,76 @@ public class SpringJPABootstrap  implements ApplicationListener<ContextRefreshed
         m3.setImagePath("http://static6.businessinsider.com/image/55918b77ecad04a3465a0a63/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners.jpg");
         m3.setUrls(new String[]{"/projects/Club%20Website Club project", "https://www.google.com/ Google Website"});
         m3.setBio("“Trump steaks, where are the steaks? Do we have the steaks?” he said. “We have Trump steaks. And by the way, you want to take one, we charge you about, what, 50 bucks a steak? Nah, I won’t.”");
+        m3.setProjects(new HashSet<Project>());*/
+
+        Member m1 = new Member();
+        m1.setId(r.nextInt(Integer.MAX_VALUE));
+        m1.setFullName("Armando Xhimanki");
+        m1.setEmail("armando.xhimanki@stonybrook.edu");
+        m1.setMajor("Computer Science");
+        m1.setImagePath("");
+        m1.setURLs();
+        m1.setBio("INSERT BIO");
+        m1.setProjects(new HashSet<Project>());
+
+        Member m2 = new Member();
+        Member2.setID(r.nextInt(Integer.MAX_VALUE));
+        m2.setFullName("Mikey Gulati");
+        m2.setEmail("mankirat.gulati@stonybrook.edu");
+        m2.setMajor("Computer Science");
+        m2.setImagePath("");
+        m2.setUrls();
+        m2.setBio("INSERT BIO");
+        m2.setProjects(new HashSet<Project>());
+
+        Member m3 = new Member();
+        m3.setID(r.nextInt(Integer.MAX_VALUE));
+        m3.setFullName("Stanley Lim");
+        m3.setEmail("stanley.lim@stonybrook.edu");
+        m3.setMajor("Computer Science");
+        m3.setImagePath("");
+        m3.setURLs();
+        m3.setBio("INSERT BIO");
         m3.setProjects(new HashSet<Project>());
+
+        Member m4 = new Member();
+        m4.setID(r.nextInt(Integer.MAX_VALUE));
+        m4.setFullName("Daniel Eliasinski");
+        m4.setEmail("daniel.eliasinski@stonybrook.edu");
+        m4.setMajor("Computer Science");
+        m4.setImagePath("");
+        m4.setUrls();
+        m4.setBio("INSERT BIO");
+        m4.setProjects(new HashSet<Project>());
+
+        Member m5 = new Member();
+        m5.setID(r.nextInt(Integer.MAX_VALUE));
+        m5.setFullName("Ravjot Sachdev");
+        m5.setMajor("Computer Science");
+        m5.setImagePath("");
+        m5.setUrls();
+        m5.setBio("INSERT BIO");
+        m5.setProjects(new HashSet<Project>());
+
+        Member m6 = new Member();
+        m6.setID(r.nextInt(Integer.MAX_VALUE));
+        m6.setFullName("Eduardo Quispe");
+        m6.setEmail("eduardo.quispe@stonybrook.edu");
+        m6.setMajor("Copmuter Science");
+        m6.ImagePath("");
+        m6.setUrls();
+        m6.setBio("INSERT BIO");
+        m6.setProjects(new HashSet<Project>());
+
+        Member m7 = new Member();
+        m7.setID(r.nextInt(Integer.MAX_VALUE));
+        m7.setFullName("Murshid Azher");
+        m7.setEmail("");
+        m7.ImagePath("");
+        m7.setUrls();
+        m7.setBio("INSERT BIO");
+        m7.setProjects(new HashSet<Project>());
+
 
         Project p1 = new Project();
         p1.setId(r.nextInt(Integer.MAX_VALUE));
@@ -100,34 +169,20 @@ public class SpringJPABootstrap  implements ApplicationListener<ContextRefreshed
         memberService.createMember(m1);
         memberService.createMember(m2);
         memberService.createMember(m3);
+        memberService.createMember(m4);
+        memberService.createMember(m5);
+        memberService.createMember(m6);
+        memberService.createMember(m7);
         projectService.createProject(p1);
 
 
         relationManager.createMemberToProjectRelation(m1.getId(), p1.getId());
         relationManager.createMemberToProjectRelation(m2.getId(), p1.getId());
         relationManager.createMemberToProjectRelation(m3.getId(), p1.getId());
-
-        for(int index = 1; index < 45; index++){
-            Project p = new Project();
-            p.setId(r.nextInt(Integer.MAX_VALUE));
-            p.setName("Test Project " + index);
-            p.setDescription("TESTING.");
-            p.setImagePath("http://i.imgur.com/WYiyYu1.jpg");
-            p.setWorkingMembers(new HashSet<Member>());
-
-            projectService.createProject(p);
-            }
-//        ideaService = new IdeaServiceJPAImpl();
-    	SecureRandom secureRandom = new SecureRandom();
-    	Random random = new Random();
-        Idea idea = new Idea();
-        idea.setDescription("IDEAewrqewr");
-        idea.setEmail("armando.xhimanki@stonybrook.edu");
-        idea.setVerified(true);
-        idea.setName("idea1");
-        idea.setId(random.nextInt(Integer.MAX_VALUE));
-       
-        ideaService.createIdea(idea);
-        }
+        relationManager.createMemberToProjectRelation(m4.getId(), p1.getId());
+        relationManager.createMemberToProjectRelation(m5.getId(), p1.getId());
+        relationManager.createMemberToProjectRelation(m6.getId(), p1.getId());
+        relationManager.createMemberToProjectRelation(m7.getId(), p1.getId());
     }
+}
 
