@@ -1,6 +1,5 @@
 package main.bootstrap;
 
-import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -9,12 +8,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import main.modelpojos.Idea;
 import main.modelpojos.Member;
 import main.modelpojos.Project;
-import main.services.jpaservices.IdeaServiceJPAImpl;
 import main.services.jpaservices.RelationManager;
-import main.services.serviceinterfaces.IdeaService;
 import main.services.serviceinterfaces.MemberService;
 import main.services.serviceinterfaces.ProjectService;
 
@@ -23,15 +19,8 @@ import main.services.serviceinterfaces.ProjectService;
  */
 @Component
 public class SpringJPABootstrap  implements ApplicationListener<ContextRefreshedEvent> {
+	
     private ProjectService projectService;
-    private IdeaService ideaService;
-    
-
-   
-    @Autowired
-	public void setIdeaService(IdeaService ideaService) {
-		this.ideaService = ideaService;
-	}
 
 	@Autowired
     public void setRelationManager(RelationManager relationManager) {

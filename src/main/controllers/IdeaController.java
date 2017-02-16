@@ -2,9 +2,10 @@ package main.controllers;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import main.modelpojos.Idea;
 import main.services.serviceinterfaces.EmailManager;
@@ -37,13 +39,14 @@ public class IdeaController {
 		this.emailManager = emailManager;
 	}
 	@RequestMapping(value = "/ideas")
-	public String ideaList(Model model) {
+	public String ideaList(@RequestParam String filter, Model model) {
 		List<Idea> ideas = ideaService.getIdeas();
-		Iterator<Idea> i = ideas.iterator();
-		while(i.hasNext()){
-			if(!i.next().isVerified())
-				i.remove();
-		}
+		//Filter for verified ideas only.
+		ideas = ideas.parallelStream().filter(idea -> idea.isVerified()).collect(Collectors.toList());
+		//Filter ideas by tag filter
+		if(filter != null)
+			ideas = ideas.parallelStream().filter(idea -> Arrays.stream(idea.getTags()).parallel().anyMatch(tag -> tag.equalsIgnoreCase(filter))).collect(Collectors.toList());
+		
 		model.addAttribute("ideas", ideas);
 		return "ideas";
 	}

@@ -26,6 +26,8 @@ public class Idea {
 	@Pattern(message = "Not a stonybrook email!", regexp = "\\S+@stonybrook\\.edu$")
 	private String email;
 	
+	private String[] tags;
+	
 	private boolean verified;
 	
 	public String getVerificationLink() {
@@ -75,7 +77,14 @@ public class Idea {
 	}
 
 	public void setEmail(String email) {
-		
 		this.email = email.toLowerCase();
+	}
+
+	public String[] getTags() {
+		return tags;
+	}
+
+	public void setTags(String[] tags) {
+		this.tags = tags;
 	}
 }
