@@ -96,65 +96,65 @@ public class SpringJPABootstrap  implements ApplicationListener<ContextRefreshed
         m1.setEmail("armando.xhimanki@stonybrook.edu");
         m1.setMajor("Computer Science");
         m1.setImagePath("");
-        m1.setURLs();
+        m1.setUrls(null);
         m1.setBio("INSERT BIO");
         m1.setProjects(new HashSet<Project>());
 
         Member m2 = new Member();
-        Member2.setID(r.nextInt(Integer.MAX_VALUE));
+        m2.setId(r.nextInt(Integer.MAX_VALUE));
         m2.setFullName("Mikey Gulati");
         m2.setEmail("mankirat.gulati@stonybrook.edu");
         m2.setMajor("Computer Science");
         m2.setImagePath("");
-        m2.setUrls();
+        m2.setUrls(null);
         m2.setBio("INSERT BIO");
         m2.setProjects(new HashSet<Project>());
 
         Member m3 = new Member();
-        m3.setID(r.nextInt(Integer.MAX_VALUE));
+        m3.setId(r.nextInt(Integer.MAX_VALUE));
         m3.setFullName("Stanley Lim");
         m3.setEmail("stanley.lim@stonybrook.edu");
         m3.setMajor("Computer Science");
         m3.setImagePath("");
-        m3.setURLs();
+        m3.getUrls();
         m3.setBio("INSERT BIO");
         m3.setProjects(new HashSet<Project>());
 
         Member m4 = new Member();
-        m4.setID(r.nextInt(Integer.MAX_VALUE));
+        m4.setId(r.nextInt(Integer.MAX_VALUE));
         m4.setFullName("Daniel Eliasinski");
         m4.setEmail("daniel.eliasinski@stonybrook.edu");
         m4.setMajor("Computer Science");
         m4.setImagePath("");
-        m4.setUrls();
+        m4.setUrls(null);
         m4.setBio("INSERT BIO");
         m4.setProjects(new HashSet<Project>());
 
         Member m5 = new Member();
-        m5.setID(r.nextInt(Integer.MAX_VALUE));
+        m5.setId(r.nextInt(Integer.MAX_VALUE));
         m5.setFullName("Ravjot Sachdev");
         m5.setMajor("Computer Science");
         m5.setImagePath("");
-        m5.setUrls();
+        m5.setUrls(null);
         m5.setBio("INSERT BIO");
         m5.setProjects(new HashSet<Project>());
 
         Member m6 = new Member();
-        m6.setID(r.nextInt(Integer.MAX_VALUE));
+        m6.setId(r.nextInt(Integer.MAX_VALUE));
         m6.setFullName("Eduardo Quispe");
         m6.setEmail("eduardo.quispe@stonybrook.edu");
         m6.setMajor("Copmuter Science");
-        m6.ImagePath("");
-        m6.setUrls();
+        m6.setImagePath("");
+        m6.setUrls(null);
         m6.setBio("INSERT BIO");
         m6.setProjects(new HashSet<Project>());
 
         Member m7 = new Member();
-        m7.setID(r.nextInt(Integer.MAX_VALUE));
+        m7.setId(r.nextInt(Integer.MAX_VALUE));
         m7.setFullName("Murshid Azher");
         m7.setEmail("");
-        m7.ImagePath("");
-        m7.setUrls();
+        m7.setImagePath("");
+        m7.setUrls(null);
         m7.setBio("INSERT BIO");
         m7.setProjects(new HashSet<Project>());
 
