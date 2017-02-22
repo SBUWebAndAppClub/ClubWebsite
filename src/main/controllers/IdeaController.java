@@ -3,8 +3,12 @@ package main.controllers;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -46,6 +50,16 @@ public class IdeaController {
 		//Filter ideas by tag filter
 		if(filter != null)
 			ideas = ideas.parallelStream().filter(idea -> Arrays.stream(idea.getTags()).parallel().anyMatch(tag -> tag.equalsIgnoreCase(filter))).collect(Collectors.toList());
+		//Sort array by email
+		Map<String, Set<Idea>> ideasByEmail = new HashMap<>();
+		ideas.forEach(idea -> {
+			Set<Idea> emailIdeas = ideasByEmail.get(idea.getEmail());
+			if(emailIdeas == null){
+				emailIdeas = new HashSet<Idea>();
+				ideasByEmail.put(idea.getEmail(), emailIdeas);
+			}
+			emailIdeas.add(idea);
+		});
 		
 		model.addAttribute("ideas", ideas);
 		return "ideas";
