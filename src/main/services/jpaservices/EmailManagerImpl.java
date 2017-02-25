@@ -70,7 +70,8 @@ public class EmailManagerImpl implements EmailManager {
 			HashMap<String, String> mappings = new HashMap<String, String>();
 			mappings.put("$url", url);
 			String htmail = readTextFile(mappings);
-			email.setHtmlMsg(htmail);
+//			email.setHtmlMsg(htmail);
+			email.setMsg(htmail);
 			email.setSubject("Validate your idea");
 			// fallback
 			email.setTextMsg("Your email client does not support html");

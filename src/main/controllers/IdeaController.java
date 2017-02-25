@@ -45,7 +45,9 @@ public class IdeaController {
 		ideas = ideas.parallelStream().filter(idea -> idea.isVerified()).collect(Collectors.toList());
 		//Filter ideas by tag filter
 		if(filter != null)
-			ideas = ideas.parallelStream().filter(idea -> Arrays.stream(idea.getTags()).parallel().anyMatch(tag -> tag.equalsIgnoreCase(filter))).collect(Collectors.toList());
+			ideas = ideas.parallelStream().filter(idea -> Arrays.stream(idea.getTags()).parallel()
+					                             .anyMatch(tag -> tag.equalsIgnoreCase(filter)))
+												 .collect(Collectors.toList());
 		
 		model.addAttribute("ideas", ideas);
 		return "ideas";
