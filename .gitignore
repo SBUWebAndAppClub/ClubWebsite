@@ -8,3 +8,5 @@
 .idea/libraries/
 .idea/workspace.xml
 src/main/resources/application.properties
+
+.idea/dbnavigator.xml

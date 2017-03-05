@@ -4,30 +4,30 @@ var mobileMenuHidden = true;
 if ($("#bg").height() > 650) {
   // Function to make the landing div the same height as the window using jQuery
   $("#landing").css({
-      'height' : $("#bg").height() // Sets the minimum height of the div as the browser height.
+    'height': $("#bg").height() // Sets the minimum height of the div as the browser height.
   })
 }
 
-  $(window).on('resize', function() { // Make sure the window height updates along with the browser
-      if ($("#bg").height() > 650) {
-        console.log($("#bg").height());
-        $("#landing").css({
-          'height' : $("#bg").height()
-      })
-    }
-    // Hides the mobile menu if the width is greater than 768px.
-    if ($("#bg").width() > 768) {
-      updateMobileMenu(true);
-    }
-  })
+$(window).on('resize', function () { // Make sure the window height updates along with the browser
+  if ($("#bg").height() > 650) {
+    console.log($("#bg").height());
+    $("#landing").css({
+      'height': $("#bg").height()
+    })
+  }
+  // Hides the mobile menu if the width is greater than 768px.
+  if ($("#bg").width() > 768) {
+    updateMobileMenu(true);
+  }
+})
 
 
 // Drop the website menu down when the user scrolls past the landing div
 
-$(window).scroll(function() {
+$(window).scroll(function () {
   if ($(window).scrollTop() < $("#landing").height()) {
     $('ul#menuList').addClass('hidden');
-      //updateMobileMenu(true);
+    //updateMobileMenu(true);
   } else {
     $('ul#menuList').removeClass('hidden');
   }
@@ -35,34 +35,46 @@ $(window).scroll(function() {
 
 // Shows/Hides the hamburger button in the menu based on the screen width.
 function updateMobileMenu(hide) {
-    mobileMenuHidden = hide;
-    if (hide) { // Hide the menu
-      $("#dropDownMenuContainer").css("height", "0");
-             /*$("#hamburgerButton i").removeClass("fa fa-times");
-             $("#hamburgerButton i").addClass("fa fa-bars");*/
-             $("#dropDownMenuContainer").css("box-shadow", "0 0 0 rgba(0, 0, 0, 0.12), 3px 4px 8px 0px rgba(0, 0, 0, 0.11)");
-               $("#hamburgerButton").removeClass("in-menu");
-                $("#menuList").css("box-shadow:", "none")
-         } else {
-           $("#hamburgerButton").addClass("in-menu");
-             $("#dropDownMenuContainer").css("height", "100%");
-             /*$("#hamburgerButton i").removeClass("fa fa-bars");
-              $("#hamburgerButton i").addClass("fa fa-times");*/
-             $("#dropDownMenuContainer").css("box-shadow", "none");
-             $("#menuList").css("box-shadow:", "rgba(0,0,0,0.3) 0 0 10px;")
-           }
+  mobileMenuHidden = hide;
+  if (hide) { // Hide the menu
+    $("#dropDownMenuContainer").css("height", "0");
+    /*$("#hamburgerButton i").removeClass("fa fa-times");
+     $("#hamburgerButton i").addClass("fa fa-bars");*/
+    $("#dropDownMenuContainer").css("box-shadow", "0 0 0 rgba(0, 0, 0, 0.12), 3px 4px 8px 0px rgba(0, 0, 0, 0.11)");
+    $("#hamburgerButton").removeClass("in-menu");
+    $("#menuList").css("box-shadow:", "none")
+  } else {
+    $("#hamburgerButton").addClass("in-menu");
+    $("#dropDownMenuContainer").css("height", "100%");
+    /*$("#hamburgerButton i").removeClass("fa fa-bars");
+     $("#hamburgerButton i").addClass("fa fa-times");*/
+    $("#dropDownMenuContainer").css("box-shadow", "none");
+    $("#menuList").css("box-shadow:", "rgba(0,0,0,0.3) 0 0 10px;")
+  }
 }
 
 // For the hamburger menu
-$("#hamburgerButton").click(function() {
-    updateMobileMenu(!mobileMenuHidden);
+$("#hamburgerButton").click(function () {
+  updateMobileMenu(!mobileMenuHidden);
 });
 
 // Hide the drop down menu when scrolling up past the landing div
-$(window).scroll(function() {
+$(window).scroll(function () {
   if ($(document).scrollTop() < $(window).height()) {
-      updateMobileMenu(true);
+    updateMobileMenu(true);
   } else {
     updateMobileMenu(false);
   }
+});
+
+/* JS for ideas.html */
+$(document).ready(function () {
+  var button = $('.email-group > .collapse-header > .collapse-button');
+  button.click(function () {
+    // Hide the list of items for that this email group
+    $(this).parent().next('ol').toggle();
+    $(this).toggleClass('collapse-button-clicked');
+    return false;
+  });
+
 });
