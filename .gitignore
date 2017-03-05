@@ -8,5 +8,6 @@
 .idea/libraries/
 .idea/workspace.xml
 src/main/resources/application.properties
-
+.idea/inspectionProfiles/
+.idea/jsLibraryMappings.xml       
 .idea/dbnavigator.xml
