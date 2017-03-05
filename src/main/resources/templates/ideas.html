@@ -1,5 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<<<<<<< HEAD
   <title>Ideas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8"/>
@@ -15,8 +16,31 @@
   <link th:href="@{css/ideas.css}" href="../static/css/ideas.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!-- JQuery CDN -->
   <script src="https://use.fontawesome.com/a696b91557.js"></script>
+=======
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+
+    <link rel="stylesheet" type="text/css" href="css/ideaspagecss.css"></link>
+
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></link>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/ideajs.js"></script>
+
+
+
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+
+>>>>>>> 55628d584c614ab5d43ccaff5674c094fe91c3fe
 </head>
+
 <body>
+<<<<<<< HEAD
 <!-- Default List item shows up if theres no ideas ( Is there a way to do 'else if' in thymeleaf? )-->
 
 <!-- ideas -->
@@ -251,6 +275,87 @@
     </div>
   </div>
 </div>
+=======
+<script>
+    function init() {
+        window.addEventListener('scroll', function(e){
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                    shrinkOn = 300,
+                    header = document.querySelector("header");
+            if (distanceY > shrinkOn) {
+                classie.add(header,"smaller");
+            } else {
+                if (classie.has(header,"smaller")) {
+                    classie.remove(header,"smaller");
+                }
+            }
+        });
+    }
+    window.onload = init();
+</script>
+
+<div id="wrapper">
+
+    <header>
+        <div class="container clearfix">
+            <h1 id="logo">
+                IDEAS PAGE
+            </h1>
+            <nav>
+                <a href="">Lorem</a>
+                <a href="">Ipsum</a>
+                <a href="">Dolor</a>
+            </nav>
+        </div>
+    </header><!-- /header -->
+<div th:if="${not #lists.isEmpty(ideas)}">
+    <div id="main">
+        <div th:each="idea, iterStat:${ideas}">
+        <div id="content">
+
+            <section>
+                <div th:if="${iterStat.index==0}">
+                <div class="container">
+                    <h1>Creator: <a th:text="${idea.name}"></a> </h1>
+                    <p>Idea Descroption: <a th:text="${idea.description}"></a> </p>
+                </div>
+                </div>
+            </section>
+            <section class="color">
+                <div th:if="${iterStat.index==1}">
+                <div class="container">
+                    <h1>Creator: <a th:text="${idea.name}"></a> </h1>
+                    <p>Idea Descroption: <a th:text="${idea.description}"></a> </p>
+                </div>
+                    </div>
+            </section>
+            <section>
+                <div th:if="${iterStat.index==2}">
+                <div class="container">
+                    <h1>Creator: <a th:text="${idea.name}"></a> </h1>
+                    <p>Idea Descroption: <a th:text="${idea.description}"></a> </p>
+                </div>
+                    </div>
+            </section>
+
+        </div>
+    </div><!-- #main -->
+        </div>
+
+
+    <footer>
+        <div id="info-bar">
+
+        </div><!-- /#top-bar -->
+    </footer><!-- /footer -->
+
+
+
+</div><!-- /#wrapper -->
+    </div>
+
+
+>>>>>>> 55628d584c614ab5d43ccaff5674c094fe91c3fe
 
 </body>
 <footer>

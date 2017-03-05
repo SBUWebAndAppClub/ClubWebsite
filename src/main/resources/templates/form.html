@@ -32,6 +32,16 @@
         p {
             font-size: 12px;
         }
+        ul {
+  white-space: nowrap;
+}
+
+ul, li {
+  list-style: none;
+  display: inline;
+   margin:10px 10px 10px 10px;
+   padding:10px 10px 10px 10px;
+}
         #center {
             height: 400px;
             max-width: 50%;
@@ -117,13 +127,30 @@
             <p>Email:</p>
             <input class="textfield" type="text" th:field="*{email}" />
             <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+             <p> Category of your idea (Select all that apply) </p>
+             <br/>
+             <ul>
+            
+<li><img src="https://c1.staticflickr.com/9/8230/8384110298_da510e0347_c.jpg" style="width:108px;height:108px;"></img></li>
+<li><img src="https://cdn0.vox-cdn.com/thumbor/4pXYTOykLPSRIuISTvH0NoKXg8E=/1020x0/cdn0.vox-cdn.com/uploads/chorus_asset/file/3462434/new-gear-vr-samsung-galaxy-s6-6441.0.jpg" style="width:108px;height:108px;"></img></li>
+<li><img src="https://cdn.pixabay.com/photo/2017/01/05/19/10/cart-1956097_960_720.png" style="width:108px;height:108px;"></img></li>
+<li><img src="https://cdn.pixabay.com/photo/2014/02/01/17/28/apple-256261_960_720.jpg" style="width:108px;height:108px;"></img></li>
+    </ul>
             <br/>
             <div id="buttonContainer">
                 <input class="button buttonBlue" type="submit" value="Submit" /> <!-- Submits data through a post request -->
                 <input class="button buttonBlue" type="reset" value="Reset" />
             </div>
+            
+              
         </form>
+        
+       
+  
     </div>
+    
+   
+	
 </body>
 
 </html>

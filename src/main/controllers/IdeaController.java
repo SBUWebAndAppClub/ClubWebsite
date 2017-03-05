@@ -2,9 +2,14 @@ package main.controllers;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -16,11 +21,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import main.modelpojos.Idea;
 import main.services.serviceinterfaces.EmailManager;
 import main.services.serviceinterfaces.IdeaService;
 
+/**
+ * [[SuppressWarningsSpartan]]
+ */
 @Controller
 public class IdeaController {
 
@@ -34,13 +43,30 @@ public class IdeaController {
 		this.emailManager = emailManager;
 	}
 	@RequestMapping(value = "/ideas")
-	public String ideaList(Model model) {
+	public String ideaList(@RequestParam String filter, Model model) {
 		List<Idea> ideas = ideaService.getIdeas();
-		Iterator<Idea> i = ideas.iterator();
-		while(i.hasNext()){
-			if(!i.next().isVerified())
-				i.remove();
-		}
+		//Filter for verified ideas only.
+		ideas = ideas.parallelStream().filter(idea -> idea.isVerified()).collect(Collectors.toList());
+		//Filter ideas by tag filter
+		if(filter != null)
+<<<<<<< HEAD
+			ideas = ideas.parallelStream().filter(idea -> Arrays.stream(idea.getTags()).parallel()
+					                             .anyMatch(tag -> tag.equalsIgnoreCase(filter)))
+												 .collect(Collectors.toList());
+=======
+			ideas = ideas.parallelStream().filter(idea -> Arrays.stream(idea.getTags()).parallel().anyMatch(tag -> tag.equalsIgnoreCase(filter))).collect(Collectors.toList());
+		//Sort array by email
+		Map<String, Set<Idea>> ideasByEmail = new HashMap<>();
+		ideas.forEach(idea -> {
+			Set<Idea> emailIdeas = ideasByEmail.get(idea.getEmail());
+			if(emailIdeas == null){
+				emailIdeas = new HashSet<Idea>();
+				ideasByEmail.put(idea.getEmail(), emailIdeas);
+			}
+			emailIdeas.add(idea);
+		});
+>>>>>>> eb7d67ae9a2b2476d76b15759b4dfccdabc5b4aa
+		
 		model.addAttribute("ideas", ideas);
 		return "ideas";
 	}
@@ -62,7 +88,7 @@ public class IdeaController {
 		int id;
 		do{
 			id = random.nextInt(Integer.MAX_VALUE);
-		}while(ideaService.getIdeaByID(id) != null);//If id exists, generate new id
+		}while(ideaService.getIdeaByID(id) != null);//If id exists, generate new id (Very costly 'cause you look for a key that probably doesn't exist.)
 		idea.setId(id);
 		//Trim strings
 		idea.setName(idea.getName().trim());
@@ -76,7 +102,8 @@ public class IdeaController {
 		idea.setVerified(false);
 		ideaService.createIdea(idea);
 		emailManager.verifyEmail(idea);
-		return "redirect:/ideas";
+		
+		return "redirect:/ideas/";
 	}
 
 	@RequestMapping(value = "/idea/{id}")
@@ -91,7 +118,7 @@ public class IdeaController {
 		model.addAttribute("idea", idea);
 		return "idea";
 	}
-	
+
 	@RequestMapping(value = "/idea/{id}/{verification}")
 	public String idea(@PathVariable Integer id, @PathVariable String verification, Model model) {
 		Idea idea = ideaService.getIdeaByID(id);
