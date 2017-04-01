@@ -112,13 +112,18 @@
 					</execution>
 				</executions>
 				<configuration>
+
+					<processTypes>
+						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+					</processTypes>
+
 					<descriptorRefs>
 						<!-- This tells Maven to include all dependencies -->
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>Main</mainClass>
+							<mainClass>main.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
