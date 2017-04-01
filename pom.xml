@@ -103,6 +103,7 @@
 
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
+				
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -111,12 +112,8 @@
 						</goals>
 					</execution>
 				</executions>
+
 				<configuration>
-
-					<processTypes>
-						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
-					</processTypes>
-
 					<descriptorRefs>
 						<!-- This tells Maven to include all dependencies -->
 						<descriptorRef>jar-with-dependencies</descriptorRef>
